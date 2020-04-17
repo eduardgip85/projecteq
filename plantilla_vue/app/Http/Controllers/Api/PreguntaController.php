@@ -64,11 +64,12 @@ class PreguntaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pregunta  $pregunta
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
     public function show(string $id)
     {
+        // pillem la resposta am,b la id
         $pregunta = Pregunta::find($id);
         $pregunta = Pregunta::with('respostes')->find($pregunta->id);
 
