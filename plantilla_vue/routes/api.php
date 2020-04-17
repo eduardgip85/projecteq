@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('pregunta', 'Api\PreguntaController');
+Route::apiResource('resposta', 'Api\RespostaController');

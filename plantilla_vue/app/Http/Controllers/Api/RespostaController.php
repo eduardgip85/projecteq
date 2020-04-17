@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pregunta;
+use App\Models\Resposta;
 use Illuminate\Http\Request;
 
-// ojito
+//ojito x2
 use App\Classes\Utilitat;
-use App\Http\Resources\PreguntaResource;
+use App\Http\Resources\RespostaResource;
 use Illuminate\Database\QueryException;
 
-class PreguntaController extends Controller
+class RespostaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        $preguntes = Pregunta::all();
+        $respostes = Resposta::all();
 
-        return new PreguntaResource($preguntes);
+        return new RespostaResource($respostes);
     }
 
     /**
@@ -33,20 +33,20 @@ class PreguntaController extends Controller
      */
     public function store(Request $request)
     {
-        // creem objecte pregunta
-        $pregunta = new Pregunta();
+        // creem objecte resposta
+        $resposta = new Resposta();
 
-        // assignem els valors de la reques a l'object pregunta
-        $pregunta->text_pregunta = $request->input('text_pregunta');
-        $pregunta->nivell = $request->input('nivell');
-        $pregunta->mode_pregunta = $request->input('mode_pregunta');
+        // assignem els valors de la reques a l'object resposta
+        $resposta->id_pregunta = $request->input('id_pregunta');
+        $resposta->text_resposta = $request->input('text_resposta');
+        $resposta->es_correcta = $request->input('es_correcta');
 
-        // provem de guardar la pregunta
+        // provem de guardar la respota
         try 
         {
-            $pregunta->save();
+            $resposta->save();
             $respostaApi = 
-                (new PreguntaResource($pregunta))
+                (new RespostaResource($resposta))
                     ->response()
                     ->setStatusCode(201);
         } 
@@ -64,24 +64,22 @@ class PreguntaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pregunta  $pregunta
+     * @param  \App\Models\Resposta  $resposta
      * @return \Illuminate\Http\Response
      */
-    public function show(Pregunta $pregunta)
+    public function show(Resposta $resposta)
     {
-        $pregunta = Pregunta::with('respostes')->find($pregunta->id);
-
-        return new PreguntaResource($pregunta);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pregunta  $pregunta
+     * @param  \App\Models\Resposta  $resposta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pregunta $pregunta)
+    public function update(Request $request, Resposta $resposta)
     {
         //
     }
@@ -89,10 +87,10 @@ class PreguntaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pregunta  $pregunta
+     * @param  \App\Models\Resposta  $resposta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pregunta $pregunta)
+    public function destroy(Resposta $resposta)
     {
         //
     }
