@@ -20,7 +20,7 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        $preguntes = Pregunta::all();
+        $preguntes = Pregunta::with('respostes')->get();
 
         return new PreguntaResource($preguntes);
     }
@@ -67,8 +67,9 @@ class PreguntaController extends Controller
      * @param  \App\Models\Pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function show(Pregunta $pregunta)
+    public function show(string $id)
     {
+        $pregunta = Pregunta::find($id);
         $pregunta = Pregunta::with('respostes')->find($pregunta->id);
 
         return new PreguntaResource($pregunta);
