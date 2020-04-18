@@ -69,13 +69,10 @@ class PreguntaController extends Controller
      */
     public function show(string $id)
     {
-<<<<<<< Updated upstream
         // pillem la resposta am,b la id
         $pregunta = Pregunta::find($id);
         $pregunta = Pregunta::with('respostes')->find($pregunta->id);
-=======
         $pregunta = Pregunta::with('respostes')->where('id',$pregunta->id)->get();
->>>>>>> Stashed changes
 
         return new PreguntaResource($pregunta);
     }
