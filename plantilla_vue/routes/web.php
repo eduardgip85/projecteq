@@ -30,4 +30,7 @@ Route::get('/about', function () {
 
 Route::post('/about','Controller@sendmail');
 
-Route::resource('/game', 'PreguntasController');
+//Route::resource('/game', 'PreguntasController');
+// game mode
+Route::get('/game', 'GameController@index');
+Route::get('/game_mode', 'GameController@ingame');

@@ -43,10 +43,10 @@
 <div class="container-fluid">
 
     <div id="app">
-            
+        @yield('principal')
     </div>
 
-    @yield('principal')
+   
 
     <script src=" {{ asset('js/app.js') }} " ></script>
 </div>
