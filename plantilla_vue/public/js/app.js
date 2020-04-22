@@ -1957,7 +1957,22 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component mounted.');
   },
-  methods: function methods() {}
+  methods: {
+    //metode per obtenir preguntes
+    obternir_preguntes: function obternir_preguntes() {
+      var me = this; // passem la ruta (url) de la api amb el mode i numero de preguntes
+
+      axios.get('api/pregunta/' + this.mode + '/' + this.num_preguntes).then(function (response) {
+        //un cop les obtenim les passem a la variable preguntes
+        me.preguntes = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  created: function created() {
+    this.obternir_preguntes();
+  }
 });
 
 /***/ }),

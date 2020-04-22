@@ -99,4 +99,20 @@ class PreguntaController extends Controller
     {
         //
     }
+
+    // pillar en funcio del mode_pregunta i num maxim
+    public function preguntes_mode(string $mode, int $num){
+
+        /*
+        per a obtenir totes les preguntes amb tema
+        $preguntes_mode = Pregunta::where('mode_pregunta', 'like','%'.$mode.'%')->
+            with('respostes')->get()*/
+        
+        //agafem totes les preguntes amb el mode passat com a parametre,
+        // agafem un num random de preguntes passat per com a parametre
+        $preguntes_mode = Pregunta::where('mode_pregunta', 'like','%'.$mode.'%')->
+            with('respostes')->get()->random($num);
+        
+        return new PreguntaResource($preguntes_mode);
+    }
 }
