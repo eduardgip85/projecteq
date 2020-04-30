@@ -1,18 +1,23 @@
 <template>
-    <h1>
-        HOLA
-    </h1>
+    <div>
+        <h1>
+            HOLA
+        </h1>
+        <secundari-pregunta :pregunta="preguntes">
+        </secundari-pregunta>
+    </div>   
 </template>
 
 <script>
     export default {
         props:[
             "mode",
-            "num_preguntes"
+            "num_preguntes",
         ],
         data(){
             return{
-               preguntes: null 
+               preguntes: [],
+               respostes_usuari: []
             }
         },
         mounted() {
@@ -23,6 +28,7 @@
             //metode per obtenir preguntes
             obternir_preguntes()
             {
+                // variable auxiliar per a accedir al component (this)
                 let me = this;
                 // passem la ruta (url) de la api amb el mode i numero de preguntes
                 axios.get('api/pregunta/' + this.mode + '/' + this.num_preguntes).then(function (response)
@@ -34,6 +40,12 @@
                 {
                     console.log(error);
                 })
+            },
+            async jugar() {
+                let call = await anotherFunctionThatReturnPromise()
+            },
+            obrir_pregunta(pregunta){
+
             }
         },
         created(){

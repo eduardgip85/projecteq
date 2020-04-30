@@ -104,7 +104,7 @@ class PreguntaController extends Controller
     public function preguntes_mode(string $mode, int $num){
 
         /*
-        per a obtenir totes les preguntes amb tema
+        per a obtenir totes les preguntes amb el mode
         $preguntes_mode = Pregunta::where('mode_pregunta', 'like','%'.$mode.'%')->
             with('respostes')->get()*/
         
