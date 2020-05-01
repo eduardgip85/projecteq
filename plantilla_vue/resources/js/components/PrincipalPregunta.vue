@@ -3,7 +3,7 @@
         <h1>
             HOLA
         </h1>
-        <secundari-pregunta :pregunta="preguntes">
+        <secundari-pregunta :pregunta="preguntes[0]">
         </secundari-pregunta>
     </div>   
 </template>
@@ -13,10 +13,11 @@
         props:[
             "mode",
             "num_preguntes",
+            "preguntes"
         ],
         data(){
             return{
-               preguntes: [],
+               //preguntes: [],
                respostes_usuari: []
             }
         },
