@@ -3,7 +3,7 @@
         <h1>
             HOLA
         </h1>
-        <secundari-pregunta :pregunta="preguntes">
+        <secundari-pregunta :pregunta="preguntes[0]">
         </secundari-pregunta>
     </div>   
 </template>

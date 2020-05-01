@@ -13,6 +13,10 @@
         font-size: 25px;
     }
 
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row-reverse!important;
+    }
+
     .navbar .navbar-brand{
         font-size: 35px;
     }
@@ -33,7 +37,7 @@
     
     #footer {
         text-align: center;
-        /*position: fixed; */
+        position: fixed; 
         bottom: 0;
         width: 100%;
     }
@@ -79,6 +83,14 @@
         color: white;
         font-size: 25px;   
     }
+
+    /* tema menu de 3 */
+    #card-boostrap:hover{
+        background-color: darkgray;
+        cursor: pointer;
+        transform:  scale(1.1);
+    }
+
 
     /* section about*/
     .card input, textarea{
@@ -196,10 +208,6 @@
         font-size: 17px;
     }
 
-    #imgranks{
-        width:100%;
-    }
-
     .textoimagencentrada{
         position: absolute;
         top: 50%;
@@ -242,6 +250,25 @@
     .card p{
         margin-bottom: 0;
         padding-top: 10px;
+    }
+
+    .card-img-top{
+        height: 100%;
+    }
+
+    .card-deck .card{
+        padding: 5px;
+        margin-bottom: 60px!important;
+        height: 125px;
+    }
+
+    .card-deck .card-body{
+        padding-top: 10px!important;
+    }
+
+    .row{
+        margin-right: 0!important;
+        margin-left: 0!important;
     }
 
 }

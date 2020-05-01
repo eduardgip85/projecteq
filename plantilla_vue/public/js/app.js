@@ -38230,7 +38230,7 @@ var render = function() {
     [
       _c("h1", [_vm._v("\n        HOLA\n    ")]),
       _vm._v(" "),
-      _c("secundari-pregunta", { attrs: { pregunta: _vm.preguntes } })
+      _c("secundari-pregunta", { attrs: { pregunta: _vm.preguntes[0] } })
     ],
     1
   )
@@ -50744,8 +50744,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
