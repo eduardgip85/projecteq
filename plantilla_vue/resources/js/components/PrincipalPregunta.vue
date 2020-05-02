@@ -3,8 +3,10 @@
         <h1>
             HOLA
         </h1>
-        <secundari-pregunta :pregunta="preguntes[0]">
-        </secundari-pregunta>
+        <secundari-pregunta 
+            :pregunta="pregunta"
+            @retornar_resposta="guardar_resposta">
+        </secundari-pregunta>    
     </div>   
 </template>
 
@@ -13,16 +15,18 @@
         props:[
             "mode",
             "num_preguntes",
-            "preguntes"
         ],
         data(){
             return{
-               //preguntes: [],
+               preguntes: [],
+               pregunta: null,
+               num: 0,                
+               resposta_usuari: null,
                respostes_usuari: []
             }
         },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component 1.')
         },
         methods:
         {
@@ -36,17 +40,41 @@
                 {
                     //un cop les obtenim les passem a la variable preguntes
                     me.preguntes = response.data;
+                    me.pregunta = me.preguntes[0];
+                    me.num++;
                 })
                 .catch(function (error)
                 {
                     console.log(error);
                 })
             },
-            async jugar() {
-                let call = await anotherFunctionThatReturnPromise()
+             canviar_pregunta(){
+                
+                var me = this;
+                if(this.num < this.preguntes.length ){
+                    me.pregunta = me.preguntes[this.num]
+                }else{
+                    alert("game over");
+                }
+                this.num++;
+                
             },
-            obrir_pregunta(pregunta){
-
+            vaidar_resposta()
+            {
+                // igualem resposta afalse
+                var resposta = false;                
+                // si la resposta es la correcta
+                if(this.resposta_usuari == this.pregunta.resposta_correcta)
+                {
+                    resposta = true;                    
+                }   
+                this.num++;
+                this.canviar_pregunta()
+                this.respostes_usuari.push(resposta);
+            },
+            guardar_resposta(resposta){ 
+                this.respostes_usuari.push(resposta);  
+                this.canviar_pregunta();              
             }
         },
         created(){

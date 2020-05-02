@@ -1,13 +1,14 @@
 <template>
     <div>
-        
-            
-
         <h3>La pregunta es: </h3>
+        <!--
         <h1 id="titol-pregunta">
         
+        </h1>-->
+        <h1 v-text="pregunta.text_pregunta">
+
         </h1>
-        <form ref="form" @submit.stop.prevent="handleSubmit">
+        <form ref="form" @submit.stop.prevent="vaidar_resposta">
         <!-- resposta -->
             <b-form-group
             label-cols="5"
@@ -23,7 +24,8 @@
                     v-model="resposta_usuari"
                     name="radio-sub-component"
                 >
-                    <b-form-radio v-for="resposta in respostes" 
+                    <!-- posarem tantes repostes com tingui la pregunta -->
+                    <b-form-radio v-for="resposta in pregunta.respostes" 
                         :key="resposta.id_resposta"
                         :value="resposta.text_resposta"
                         >{{resposta.text_resposta}}</b-form-radio>
@@ -33,7 +35,6 @@
             <button
                 type="submit"
                 id="boto-submit"
-                v-on:click="retornar_resposta()"
                 style="display: block;"
                 class="btn btn-primary"
                 >Guardar Resposta</button>
@@ -50,33 +51,40 @@
         ],
         data(){
             return{
-               respostes: [],
+               //respostes: [],
+               //pregunta: null,
                resposta_usuari: null
             }
         },
-        mounted() {
-            console.log('Component mounted.')
-            this.mostrar_pregunta();        
+        mounted() 
+        {
+            console.log('Component 2.')
+            // executem el metode per mostrar pregunta
+            //this.mostrar_pregunta();        
+
+            // agafem el titol de la pregunta i limposme el valor de la pregunta 
+            document.getElementById("titol-pregunta").innerHTML = this.pregunta.text_pregunta;  
         },
         methods:
         {
-            retornar_resposta(){
-                resposta = "";
-                console.log("hola")
-                if(this.resposta_usuari == this.pregunta.resposta_correcta){
-                    resposta = "true";
-                    console.log("true")
-                }else{
-                    resposta = "false";
-                    console.log("false")
-                }                
-                console.log(resposta)
-            },
-            mostrar_pregunta(){
-                console.log(this.pregunta);
-                this.respostes = this.pregunta.respostes;            
+            mostrar_pregunta()
+            {
+                
                 document.getElementById("titol-pregunta").innerHTML = this.pregunta.text_pregunta;  
             },
+            vaidar_resposta()
+            {
+                // igualem resposta afalse
+                var resposta = false;                
+                // si la resposta es la correcta
+                if(this.resposta_usuari == this.pregunta.resposta_correcta)
+                {
+                    resposta = true;                    
+                }   
+                // retornem la reposta com a event al component superior
+                this.$emit('retornar_resposta', resposta);          
+            },
+            
         },
         created(){
         }
