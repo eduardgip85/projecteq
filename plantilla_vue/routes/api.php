@@ -16,5 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+// routes preguntes
 Route::apiResource('pregunta', 'Api\PreguntaController');
+Route::get('pregunta/{mode}/{num}', 'Api\PreguntaController@preguntes_mode');
+
+Route::apiResource('resposta', 'Api\RespostaController');

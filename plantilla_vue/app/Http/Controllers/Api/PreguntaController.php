@@ -20,7 +20,7 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        $preguntes = Pregunta::all();
+        $preguntes = Pregunta::with('respostes')->get();
 
         return new PreguntaResource($preguntes);
     }
@@ -45,7 +45,7 @@ class PreguntaController extends Controller
         try 
         {
             $pregunta->save();
-            $resposta = 
+            $respostaApi = 
                 (new PreguntaResource($pregunta))
                     ->response()
                     ->setStatusCode(201);
@@ -54,22 +54,27 @@ class PreguntaController extends Controller
         catch (QueryException $e)
         {
             $missatge = Utilitat::errorMessage($e);
-            $resposta = response()
+            $respostaApi = response()
                 ->json(['error' => $missatge], 400);
         }
 
-        return $resposta;
+        return $respostaApi;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pregunta  $pregunta
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Pregunta $pregunta)
+    public function show(string $id)
     {
-        //
+        // pillem la resposta am,b la id
+        $pregunta = Pregunta::find($id);
+        $pregunta = Pregunta::with('respostes')->find($pregunta->id);
+        $pregunta = Pregunta::with('respostes')->where('id',$pregunta->id)->get();
+
+        return new PreguntaResource($pregunta);
     }
 
     /**
@@ -93,5 +98,21 @@ class PreguntaController extends Controller
     public function destroy(Pregunta $pregunta)
     {
         //
+    }
+
+    // pillar en funcio del mode_pregunta i num maxim
+    public function preguntes_mode(string $mode, int $num){
+
+        /*
+        per a obtenir totes les preguntes amb el mode
+        $preguntes_mode = Pregunta::where('mode_pregunta', 'like','%'.$mode.'%')->
+            with('respostes')->get()*/
+        
+        //agafem totes les preguntes amb el mode passat com a parametre,
+        // agafem un num random de preguntes passat per com a parametre
+        $preguntes_mode = Pregunta::where('mode_pregunta', 'like','%'.$mode.'%')->
+            with('respostes')->get()->random($num);
+        
+        return new PreguntaResource($preguntes_mode);
     }
 }

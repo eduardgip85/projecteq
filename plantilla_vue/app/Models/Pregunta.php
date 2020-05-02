@@ -11,7 +11,7 @@ class Pregunta extends Model
     public $timestamps = false;
 
     // relacions
-    public function preguntes(){
+    public function respostes(){
         return $this->hasMany('App\Models\Resposta', 'id_pregunta');
     }
 }
