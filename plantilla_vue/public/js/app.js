@@ -1953,6 +1953,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mode", "num_preguntes"],
   data: function data() {
@@ -1961,7 +1971,8 @@ __webpack_require__.r(__webpack_exports__);
       pregunta: null,
       num: 0,
       resposta_usuari: null,
-      respostes_usuari: []
+      respostes_usuari: [],
+      modalFinal: false
     };
   },
   mounted: function mounted() {
@@ -1988,10 +1999,14 @@ __webpack_require__.r(__webpack_exports__);
       if (this.num < this.preguntes.length) {
         me.pregunta = me.preguntes[this.num];
       } else {
-        alert("game over");
+        //alert("game over");
+        this.modalFinal = true;
       }
 
       this.num++;
+    },
+    redirigir: function redirigir() {
+      alert("alright");
     },
     vaidar_resposta: function vaidar_resposta() {
       // igualem resposta afalse
@@ -79055,7 +79070,36 @@ var render = function() {
       _c("secundari-pregunta", {
         attrs: { pregunta: _vm.pregunta },
         on: { retornar_resposta: _vm.guardar_resposta }
-      })
+      }),
+      _vm._v(" "),
+      _c("b-modal", { attrs: { id: "modal-1", title: "BootstrapVue" } }, [
+        _c("p", { staticClass: "my-4" }, [_vm._v("Hello from modal!")])
+      ]),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "modal-hospital",
+            title: "Seleciona un hospital",
+            size: "lg"
+          },
+          on: {
+            ok: _vm.redirigir,
+            cancel: _vm.redirigir,
+            hide: _vm.redirigir,
+            close: _vm.redirigir
+          },
+          model: {
+            value: _vm.modalFinal,
+            callback: function($$v) {
+              _vm.modalFinal = $$v
+            },
+            expression: "modalFinal"
+          }
+        },
+        [_vm._v("\n        HAU\n    ")]
+      )
     ],
     1
   )

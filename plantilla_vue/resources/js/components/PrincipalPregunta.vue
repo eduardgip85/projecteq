@@ -6,7 +6,17 @@
         <secundari-pregunta 
             :pregunta="pregunta"
             @retornar_resposta="guardar_resposta">
-        </secundari-pregunta>    
+        </secundari-pregunta>
+
+        <!-- modal per s'acabi el joc -->
+        <b-modal id="modal-1" title="BootstrapVue">
+            <p class="my-4">Hello from modal!</p>
+        </b-modal>
+
+        <b-modal id="modal-hospital" @ok="redirigir" @cancel="redirigir" @hide="redirigir" @close="redirigir" title="Seleciona un hospital" size="lg" v-model="modalFinal">
+            HAU
+        </b-modal>
+
     </div>   
 </template>
 
@@ -22,7 +32,8 @@
                pregunta: null,
                num: 0,                
                resposta_usuari: null,
-               respostes_usuari: []
+               respostes_usuari: [],
+               modalFinal: false,
             }
         },
         mounted() {
@@ -54,10 +65,13 @@
                 if(this.num < this.preguntes.length ){
                     me.pregunta = me.preguntes[this.num]
                 }else{
-                    alert("game over");
+                    //alert("game over");
+                    this.modalFinal = true;
                 }
-                this.num++;
-                
+                this.num++;                
+            },
+            redirigir(){
+                alert("alright")
             },
             vaidar_resposta()
             {
