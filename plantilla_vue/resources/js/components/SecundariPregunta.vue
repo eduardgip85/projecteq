@@ -28,7 +28,10 @@
                     <b-form-radio v-for="resposta in pregunta.respostes" 
                         :key="resposta.id_resposta"
                         :value="resposta.text_resposta"
-                        >{{resposta.text_resposta}}</b-form-radio>
+                        >{{resposta.text_resposta}}
+                        </b-form-radio>
+
+
                 </b-form-radio-group>
             </b-form-group>
             <div class="d-flex justify-content-center">
