@@ -1972,7 +1972,8 @@ __webpack_require__.r(__webpack_exports__);
       num: 0,
       resposta_usuari: null,
       respostes_usuari: [],
-      modalFinal: false
+      modalFinal: false,
+      jugant: true
     };
   },
   mounted: function mounted() {
@@ -2000,13 +2001,15 @@ __webpack_require__.r(__webpack_exports__);
         me.pregunta = me.preguntes[this.num];
       } else {
         //alert("game over");
-        this.modalFinal = true;
+        //this.modalFinal = true;
+        this.jugant = false;
       }
 
       this.num++;
     },
     redirigir: function redirigir() {
-      alert("alright");
+      //alert("alright")
+      window.location.href = 'http://127.0.0.1:8000/quiz?';
     },
     vaidar_resposta: function vaidar_resposta() {
       // igualem resposta afalse
@@ -79065,25 +79068,17 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("h1", [_vm._v("\n        HOLA\n    ")]),
-      _vm._v(" "),
-      _c("secundari-pregunta", {
-        attrs: { pregunta: _vm.pregunta },
-        on: { retornar_resposta: _vm.guardar_resposta }
-      }),
-      _vm._v(" "),
-      _c("b-modal", { attrs: { id: "modal-1", title: "BootstrapVue" } }, [
-        _c("p", { staticClass: "my-4" }, [_vm._v("Hello from modal!")])
-      ]),
+      _vm.jugant
+        ? _c("secundari-pregunta", {
+            attrs: { pregunta: _vm.pregunta },
+            on: { retornar_resposta: _vm.guardar_resposta }
+          })
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "b-modal",
         {
-          attrs: {
-            id: "modal-hospital",
-            title: "Seleciona un hospital",
-            size: "lg"
-          },
+          attrs: { id: "modal-hospital", title: "", size: "lg" },
           on: {
             ok: _vm.redirigir,
             cancel: _vm.redirigir,
@@ -79098,8 +79093,23 @@ var render = function() {
             expression: "modalFinal"
           }
         },
-        [_vm._v("\n        HAU\n    ")]
-      )
+        [_vm._v("\n        S'ha acabat el joc\n    ")]
+      ),
+      _vm._v(" "),
+      !_vm.jugant
+        ? _c(
+            "div",
+            { staticClass: "text-center" },
+            [
+              _c("b-button", [_vm._v("PA TU PUTA CASA")]),
+              _vm._v(" "),
+              _c("b-button", { attrs: { variant: "success" } }, [
+                _vm._v("TRONAR A JUGAR")
+              ])
+            ],
+            1
+          )
+        : _vm._e()
     ],
     1
   )

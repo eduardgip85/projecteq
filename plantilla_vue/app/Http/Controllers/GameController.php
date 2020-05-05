@@ -16,7 +16,7 @@ class GameController extends Controller
         // posarem el model del joc
         $mode = "game";
         // quantes preguntes tindrà 
-        $num_preguntes = "2";
+        $num_preguntes = "10";
         // retornem view amb les dades
         return view('game_mode.ingame', compact('mode', 'num_preguntes'));
     }
