@@ -14,7 +14,7 @@
         <!-- Menu per acxabar el joc-->
         <div v-if="!jugant" class="text-center">
               
-            <b-button>PA TU PUTA CASA</b-button>
+            <b-button>P CASA</b-button>
             <b-button variant="success">TRONAR A JUGAR</b-button>
         </div>
     </div>   
