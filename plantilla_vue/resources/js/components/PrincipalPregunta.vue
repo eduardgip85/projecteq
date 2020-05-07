@@ -1,22 +1,22 @@
 <template>
     <div>
-        <h1>
-            HOLA
-        </h1>
         <secundari-pregunta 
+            v-if="jugant"
             :pregunta="pregunta"
             @retornar_resposta="guardar_resposta">
         </secundari-pregunta>
 
         <!-- modal per s'acabi el joc -->
-        <b-modal id="modal-1" title="BootstrapVue">
-            <p class="my-4">Hello from modal!</p>
+        <b-modal id="modal-hospital" @ok="redirigir" @cancel="redirigir" @hide="redirigir" @close="redirigir" title="" size="lg" v-model="modalFinal">
+            S'ha acabat el joc
         </b-modal>
 
-        <b-modal id="modal-hospital" @ok="redirigir" @cancel="redirigir" @hide="redirigir" @close="redirigir" title="Seleciona un hospital" size="lg" v-model="modalFinal">
-            HAU
-        </b-modal>
-
+        <!-- Menu per acxabar el joc-->
+        <div v-if="!jugant" class="text-center">
+              
+            <b-button>P CASA</b-button>
+            <b-button variant="success">TRONAR A JUGAR</b-button>
+        </div>
     </div>   
 </template>
 
@@ -34,6 +34,7 @@
                resposta_usuari: null,
                respostes_usuari: [],
                modalFinal: false,
+               jugant: true,
             }
         },
         mounted() {
@@ -66,12 +67,15 @@
                     me.pregunta = me.preguntes[this.num]
                 }else{
                     //alert("game over");
-                    this.modalFinal = true;
+                    //this.modalFinal = true;
+                    this.jugant = false;
                 }
                 this.num++;                
             },
             redirigir(){
-                alert("alright")
+                //alert("alright")
+
+                window.location.href = 'http://127.0.0.1:8000/quiz?'; 
             },
             vaidar_resposta()
             {

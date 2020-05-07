@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('pregunta', 'Api\PreguntaController');
 Route::get('pregunta/{mode}/{num}', 'Api\PreguntaController@preguntes_mode');
 
+
 Route::apiResource('resposta', 'Api\RespostaController');
+Route::get('resposta/{id_resposta}/{validar}', 'Api\RespostaController@validarResposta');
