@@ -27,7 +27,7 @@
                     <!-- posarem tantes repostes com tingui la pregunta -->
                     <b-form-radio v-for="resposta in pregunta.respostes" 
                         :key="resposta.id_resposta"
-                        :value="resposta.text_resposta"
+                        :value="resposta.id"
                         >{{resposta.text_resposta}}
                         </b-form-radio>
 
@@ -56,7 +56,8 @@
             return{
                //respostes: [],
                //pregunta: null,
-               resposta_usuari: null
+               resposta_usuari: null,
+               resposta_validada: false
             }
         },
         mounted() 
@@ -78,14 +79,32 @@
             vaidar_resposta()
             {
                 // igualem resposta afalse
-                var resposta = false;                
+                //this.resposta = false;                
                 // si la resposta es la correcta
+
+                //fer api
+                let me = this;
+                debugger;
+                axios.get('api/resposta/' + this.resposta_usuari + '/' + "validar").then(function (response)
+                {
+                    debugger;
+                    //un cop les obtenim les passem a la variable preguntes
+                    me.resposta_validada = response.data[0];
+                     
+                })
+                .catch(function (error)
+                {
+                    console.log(error);
+                })
+                /*
                 if(this.resposta_usuari == this.pregunta.resposta_correcta)
                 {
                     resposta = true;                    
-                }   
+                }   */
+                // nullejem la reposta del usuari
+                this.resposta_usuari = null;
                 // retornem la reposta com a event al component superior
-                this.$emit('retornar_resposta', resposta);          
+                this.$emit('retornar_resposta', this.resposta_validada);        
             },
             
         },

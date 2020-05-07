@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Pregunta;
 use Illuminate\Http\Request;
 
+use App\Models\Resposta;
+
 // ojito
 use App\Classes\Utilitat;
 use App\Http\Resources\PreguntaResource;
@@ -101,8 +103,8 @@ class PreguntaController extends Controller
     }
 
     // pillar en funcio del mode_pregunta i num maxim
-    public function preguntes_mode(string $mode, int $num){
-
+    public function preguntes_mode(string $mode, int $num)
+    {
         /*
         per a obtenir totes les preguntes amb el mode
         $preguntes_mode = Pregunta::where('mode_pregunta', 'like','%'.$mode.'%')->
@@ -110,9 +112,11 @@ class PreguntaController extends Controller
         
         //agafem totes les preguntes amb el mode passat com a parametre,
         // agafem un num random de preguntes passat per com a parametre
+        /*$preguntes_mode = Pregunta::where('mode_pregunta', 'like','%'.$mode.'%')->
+            with('respostes')->get()->random($num);*/
+        //no agafem la columna reposta
         $preguntes_mode = Pregunta::where('mode_pregunta', 'like','%'.$mode.'%')->
-            with('respostes')->get()->random($num);
-        
+            with('respostes')->get(['id','text_pregunta','nivell', 'mode_pregunta'])->random($num);
         return new PreguntaResource($preguntes_mode);
     }
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Resposta;
 use Illuminate\Http\Request;
 
+use App\Models\Pregunta;
+
 //ojito x2
 use App\Classes\Utilitat;
 use App\Http\Resources\RespostaResource;
@@ -93,5 +95,22 @@ class RespostaController extends Controller
     public function destroy(Resposta $resposta)
     {
         //
+    }
+
+    //
+    public function validarResposta(string $id_respota)
+    {
+        $resposta = Resposta::find($id_respota);
+
+        $pregunta = Pregunta::find($resposta->id_pregunta);
+
+        $correcte = false;
+        
+        // comprevem la resposta de l'usuari amb al resposta correcta de la pregunta
+        if( !strcmp($resposta->text_resposta, $pregunta->resposta_correcta)){
+            $correcte = true;
+        }
+
+        return [$correcte];
     }
 }

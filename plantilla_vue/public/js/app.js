@@ -2099,7 +2099,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       //respostes: [],
       //pregunta: null,
-      resposta_usuari: null
+      resposta_usuari: null,
+      resposta_validada: false
     };
   },
   mounted: function mounted() {
@@ -2115,14 +2116,28 @@ __webpack_require__.r(__webpack_exports__);
     },
     vaidar_resposta: function vaidar_resposta() {
       // igualem resposta afalse
-      var resposta = false; // si la resposta es la correcta
+      //this.resposta = false;                
+      // si la resposta es la correcta
+      //fer api
+      var me = this;
+      debugger;
+      axios.get('api/resposta/' + this.resposta_usuari + '/' + "validar").then(function (response) {
+        debugger; //un cop les obtenim les passem a la variable preguntes
 
-      if (this.resposta_usuari == this.pregunta.resposta_correcta) {
-        resposta = true;
-      } // retornem la reposta com a event al component superior
+        me.resposta_validada = response.data[0];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      /*
+      if(this.resposta_usuari == this.pregunta.resposta_correcta)
+      {
+          resposta = true;                    
+      }   */
+      // nullejem la reposta del usuari
 
+      this.resposta_usuari = null; // retornem la reposta com a event al component superior
 
-      this.$emit('retornar_resposta', resposta);
+      this.$emit('retornar_resposta', this.resposta_validada);
     }
   },
   created: function created() {}
@@ -79188,10 +79203,7 @@ var render = function() {
               _vm._l(_vm.pregunta.respostes, function(resposta) {
                 return _c(
                   "b-form-radio",
-                  {
-                    key: resposta.id_resposta,
-                    attrs: { value: resposta.text_resposta }
-                  },
+                  { key: resposta.id_resposta, attrs: { value: resposta.id } },
                   [
                     _vm._v(
                       _vm._s(resposta.text_resposta) + "\n                    "
