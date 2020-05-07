@@ -2089,7 +2089,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["pregunta"],
   data: function data() {
@@ -79149,15 +79148,7 @@ var render = function() {
       [
         _c(
           "b-form-group",
-          {
-            attrs: {
-              "label-cols": "5",
-              "label-cols-md": "4",
-              "label-cols-xl": "3",
-              id: "input-group-0",
-              "label-for": "input-0"
-            }
-          },
+          { attrs: { id: "input-group-0" } },
           [
             _c(
               "b-form-radio-group",
@@ -79165,7 +79156,9 @@ var render = function() {
                 attrs: {
                   id: "radio-group",
                   required: "",
-                  name: "radio-sub-component"
+                  name: "radio-sub-component",
+                  buttons: "",
+                  "button-variant": "outline-secondary"
                 },
                 model: {
                   value: _vm.resposta_usuari,
@@ -79180,7 +79173,10 @@ var render = function() {
                   "b-form-radio",
                   {
                     key: resposta.id_resposta,
-                    attrs: { value: resposta.text_resposta }
+                    attrs: {
+                      id: "form-radio-btn",
+                      value: resposta.text_resposta
+                    }
                   },
                   [
                     _vm._v(

@@ -166,7 +166,7 @@
     }
     
     /*PROBES RADIO BUTTONS*/
-    /*perque es vegin grans i contorno blanc )*/
+    /*perque es vegin grans i contorno blanc )
     .checkbox-budget:checked + label,
     .checkbox-budget:not(:checked) + label{
         position: relative;
@@ -196,7 +196,7 @@
     }
 
     /*quan esta check no te contorno negre 
-    tema de quan esta check*/
+    tema de quan esta check
     .checkbox-budget:not(:checked) + label{
         background-color: var(--dark-light);
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -210,7 +210,7 @@
     }
 
 
-    /* color de fondo de las cartas (color naranja gradient*/
+    /* color de fondo de las cartas (color naranja gradient
     .checkbox-budget:checked + label::before,
     .checkbox-budget:not(:checked) + label::before{
         position: absolute;
@@ -225,7 +225,7 @@
     }
 
     /* tema de transicion de letras que pasan
-    a blanco */
+    a blanco 
     .checkbox-budget:checked + label span::before,
     .checkbox-budget:not(:checked) + label span::before{
         position: absolute;
@@ -243,18 +243,18 @@
     }
 
     /* para que solo se vea las letras blancas
-    en el radio seleccionado*/
+    en el radio seleccionado
     .checkbox-budget:not(:checked) + label span::before{
         max-height: 0;
     }
 
-    /*efecto de aparecer las letras blancas*/
+    /*efecto de aparecer las letras blancas
     .checkbox-budget:checked + label span::before{
         max-height: 100%;
     }
 
     /* para que no se muestren las redondas del
-    radio button */
+    radio button 
     [type="radio"]:checked,
     [type="radio"]:not(:checked){
         position: absolute;
@@ -262,8 +262,17 @@
         width: 0;
         height: 0;
         visibility: hidden;
+    }*/
+
+    /*radio buton*/
+    #radio-group{
+        margin-left: auto;
+        margin-right: auto;
     }
-    
+
+    #radio-group label{
+        margin: 100px;
+    }
 }
 
 

@@ -11,21 +11,19 @@
         <form ref="form" @submit.stop.prevent="vaidar_resposta">
         <!-- resposta -->
             <b-form-group
-            label-cols="5"
-            label-cols-md="4"
-            label-cols-xl="3"
             id="input-group-0"
-
-            label-for="input-0"
             >
                 <b-form-radio-group
                     id="radio-group"
                     required
                     v-model="resposta_usuari"
                     name="radio-sub-component"
+                    buttons
+                    button-variant="outline-secondary"
                 >
                     <!-- posarem tantes repostes com tingui la pregunta -->
                     <b-form-radio v-for="resposta in pregunta.respostes" 
+                        id="form-radio-btn"
                         :key="resposta.id_resposta"
                         :value="resposta.text_resposta"
                         >{{resposta.text_resposta}}
@@ -42,6 +40,7 @@
                 class="btn btn-primary"
                 >Guardar Resposta</button>
             </div>
+
         </form>    
     </div>
     
