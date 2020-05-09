@@ -1,13 +1,16 @@
 <template>
     <div>
-        <h3>La pregunta es: </h3>
+                
         <!--
         <h1 id="titol-pregunta">
         
         </h1>-->
-        <h1 v-text="pregunta.text_pregunta">
+        <div>
+            <h1 v-text="pregunta.text_pregunta" class="textopregunta"></h1>
+        </div>
+        
 
-        </h1>
+        
         <form ref="form" @submit.stop.prevent="vaidar_resposta">
         <!-- resposta -->
             <b-form-group
