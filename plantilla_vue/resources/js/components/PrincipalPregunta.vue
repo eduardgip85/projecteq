@@ -75,6 +75,7 @@
                 {
                     //un cop les obtenim les passem a la variable preguntes
                     me.preguntes = response.data;
+                    me.preguntes = me.barrejar_respostes(me.preguntes);
                     me.pregunta = me.preguntes[0];
                     me.num++;
                 })
@@ -94,6 +95,33 @@
                     this.jugant = false;
                 }
                 this.num++;                
+            },
+            barrejar_respostes(preguntes){
+
+                for (var i = 0; i < preguntes.length; i++) {
+                    // igualem les respotes a l'array barrejat
+                    preguntes[i].respostes = this.shuffle(preguntes[i].respostes);
+                }
+                return preguntes;
+            },
+            shuffle(array) {
+                
+                var currentIndex = array.length, temporaryValue, randomIndex;
+
+                // While there remain elements to shuffle...
+                while (0 !== currentIndex) {
+
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+
+                    // And swap it with the current element.
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                }
+
+                return array;
             },
             redirigir(){
                 //alert("alright")

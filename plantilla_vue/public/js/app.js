@@ -2011,6 +2011,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/pregunta/' + this.mode + '/' + this.num_preguntes).then(function (response) {
         //un cop les obtenim les passem a la variable preguntes
         me.preguntes = response.data;
+        me.preguntes = me.barrejar_respostes(me.preguntes);
         me.pregunta = me.preguntes[0];
         me.num++;
       })["catch"](function (error) {
@@ -2029,6 +2030,31 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.num++;
+    },
+    barrejar_respostes: function barrejar_respostes(preguntes) {
+      for (var i = 0; i < preguntes.length; i++) {
+        // igualem les respotes a l'array barrejat
+        preguntes[i].respostes = this.shuffle(preguntes[i].respostes);
+      }
+
+      return preguntes;
+    },
+    shuffle: function shuffle(array) {
+      var currentIndex = array.length,
+          temporaryValue,
+          randomIndex; // While there remain elements to shuffle...
+
+      while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1; // And swap it with the current element.
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
     },
     redirigir: function redirigir() {
       //alert("alright")
@@ -2110,7 +2136,7 @@ __webpack_require__.r(__webpack_exports__);
       //respostes: [],
       //pregunta: null,
       resposta_usuari: null,
-      resposta_validada: false
+      resposta_validada: null
     };
   },
   mounted: function mounted() {
@@ -2134,20 +2160,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/resposta/' + this.resposta_usuari + '/' + "validar").then(function (response) {
         debugger; //un cop les obtenim les passem a la variable preguntes
 
-        me.resposta_validada = response.data[0];
+        me.resposta_validada = response.data[0]; // nullejem la reposta del usuari
+
+        me.resposta_usuari = null; // retornem la reposta com a event al component superior
+
+        me.$emit('retornar_resposta', me.resposta_validada);
       })["catch"](function (error) {
         console.log(error);
       });
-      /*
-      if(this.resposta_usuari == this.pregunta.resposta_correcta)
-      {
-          resposta = true;                    
-      }   */
-      // nullejem la reposta del usuari
-
-      this.resposta_usuari = null; // retornem la reposta com a event al component superior
-
-      this.$emit('retornar_resposta', this.resposta_validada);
     }
   },
   created: function created() {}

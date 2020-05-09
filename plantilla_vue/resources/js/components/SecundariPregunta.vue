@@ -56,7 +56,7 @@
                //respostes: [],
                //pregunta: null,
                resposta_usuari: null,
-               resposta_validada: false
+               resposta_validada: null
             }
         },
         mounted() 
@@ -89,21 +89,15 @@
                     debugger;
                     //un cop les obtenim les passem a la variable preguntes
                     me.resposta_validada = response.data[0];
-                     
+                    // nullejem la reposta del usuari
+                    me.resposta_usuari = null;
+                    // retornem la reposta com a event al component superior
+                    me.$emit('retornar_resposta', me.resposta_validada);  
                 })
                 .catch(function (error)
                 {
                     console.log(error);
-                })
-                /*
-                if(this.resposta_usuari == this.pregunta.resposta_correcta)
-                {
-                    resposta = true;                    
-                }   */
-                // nullejem la reposta del usuari
-                this.resposta_usuari = null;
-                // retornem la reposta com a event al component superior
-                this.$emit('retornar_resposta', this.resposta_validada);        
+                })                      
             },
             
         },
