@@ -13,9 +13,33 @@
 
         <!-- Menu per acxabar el joc-->
         <div v-if="!jugant" class="text-center">
-              
-            <b-button>P CASA</b-button>
-            <b-button variant="success">TRONAR A JUGAR</b-button>
+            
+            <!-- taula -->
+            <b-table-simple hover  responsive>
+                <b-thead head-variant="dark">
+                    <b-tr>
+                        <b-th >Pregunta</b-th>
+                        <b-th>Tu respuesta</b-th>
+                        <b-th>Respuesta correcta</b-th>
+                    </b-tr>
+                </b-thead>
+                <b-tbody>
+                    <b-tr v-for="(r_usuari, index) in respostes_usuari" :key="r_usuari.id">
+                        <b-td> {{ preguntes[index].text_pregunta }}</b-td>                        
+                        <b-td v-if="r_usuari" variant="success">CORRECTO</b-td>
+                        <b-td v-else variant="danger">INCORRECTO</b-td>
+                        <b-td>CHOCOLATE</b-td>
+                    </b-tr>
+                </b-tbody>
+            </b-table-simple>
+            
+            <a href="http://127.0.0.1:8000/quiz?">
+                <b-button>TORNAR INICI</b-button>
+            </a>
+            <a href="http://127.0.0.1:8000/game_mode?">
+                <b-button variant="success">TORNAR A JUGAR</b-button>
+            </a>
+            
         </div>
     </div>   
 </template>
@@ -31,7 +55,6 @@
                preguntes: [],
                pregunta: null,
                num: 0,                
-               resposta_usuari: null,
                respostes_usuari: [],
                modalFinal: false,
                jugant: true,
@@ -76,19 +99,6 @@
                 //alert("alright")
 
                 window.location.href = 'http://127.0.0.1:8000/quiz?'; 
-            },
-            vaidar_resposta()
-            {
-                // igualem resposta afalse
-                var resposta = false;                
-                // si la resposta es la correcta
-                if(this.resposta_usuari == this.pregunta.resposta_correcta)
-                {
-                    resposta = true;                    
-                }   
-                this.num++;
-                this.canviar_pregunta()
-                this.respostes_usuari.push(resposta);
             },
             guardar_resposta(resposta){ 
                 this.respostes_usuari.push(resposta);  
