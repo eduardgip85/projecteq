@@ -1963,6 +1963,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mode", "num_preguntes"],
   data: function data() {
@@ -1970,7 +1994,6 @@ __webpack_require__.r(__webpack_exports__);
       preguntes: [],
       pregunta: null,
       num: 0,
-      resposta_usuari: null,
       respostes_usuari: [],
       modalFinal: false,
       jugant: true
@@ -2010,18 +2033,6 @@ __webpack_require__.r(__webpack_exports__);
     redirigir: function redirigir() {
       //alert("alright")
       window.location.href = 'http://127.0.0.1:8000/quiz?';
-    },
-    vaidar_resposta: function vaidar_resposta() {
-      // igualem resposta afalse
-      var resposta = false; // si la resposta es la correcta
-
-      if (this.resposta_usuari == this.pregunta.resposta_correcta) {
-        resposta = true;
-      }
-
-      this.num++;
-      this.canviar_pregunta();
-      this.respostes_usuari.push(resposta);
     },
     guardar_resposta: function guardar_resposta(resposta) {
       this.respostes_usuari.push(resposta);
@@ -79118,11 +79129,78 @@ var render = function() {
             "div",
             { staticClass: "text-center" },
             [
-              _c("b-button", [_vm._v("P CASA")]),
+              _c(
+                "b-table-simple",
+                { attrs: { hover: "", responsive: "" } },
+                [
+                  _c(
+                    "b-thead",
+                    { attrs: { "head-variant": "dark" } },
+                    [
+                      _c(
+                        "b-tr",
+                        [
+                          _c("b-th", [_vm._v("Pregunta")]),
+                          _vm._v(" "),
+                          _c("b-th", [_vm._v("Tu respuesta")]),
+                          _vm._v(" "),
+                          _c("b-th", [_vm._v("Respuesta correcta")])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-tbody",
+                    _vm._l(_vm.respostes_usuari, function(r_usuari, index) {
+                      return _c(
+                        "b-tr",
+                        { key: r_usuari.id },
+                        [
+                          _c("b-td", [
+                            _vm._v(
+                              " " + _vm._s(_vm.preguntes[index].text_pregunta)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          r_usuari
+                            ? _c("b-td", { attrs: { variant: "success" } }, [
+                                _vm._v("CORRECTO")
+                              ])
+                            : _c("b-td", { attrs: { variant: "danger" } }, [
+                                _vm._v("INCORRECTO")
+                              ]),
+                          _vm._v(" "),
+                          _c("b-td", [_vm._v("CHOCOLATE")])
+                        ],
+                        1
+                      )
+                    }),
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("b-button", { attrs: { variant: "success" } }, [
-                _vm._v("TRONAR A JUGAR")
-              ])
+              _c(
+                "a",
+                { attrs: { href: "http://127.0.0.1:8000/quiz?" } },
+                [_c("b-button", [_vm._v("TORNAR INICI")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                { attrs: { href: "http://127.0.0.1:8000/game_mode?" } },
+                [
+                  _c("b-button", { attrs: { variant: "success" } }, [
+                    _vm._v("TORNAR A JUGAR")
+                  ])
+                ],
+                1
+              )
             ],
             1
           )
@@ -79196,17 +79274,10 @@ var render = function() {
               _vm._l(_vm.pregunta.respostes, function(resposta) {
                 return _c(
                   "b-form-radio",
-<<<<<<< HEAD
                   {
                     key: resposta.id_resposta,
-                    attrs: {
-                      id: "form-radio-btn",
-                      value: resposta.text_resposta
-                    }
+                    attrs: { id: "form-radio-btn", value: resposta.id }
                   },
-=======
-                  { key: resposta.id_resposta, attrs: { value: resposta.id } },
->>>>>>> develop_master
                   [
                     _vm._v(
                       _vm._s(resposta.text_resposta) + "\n                    "
