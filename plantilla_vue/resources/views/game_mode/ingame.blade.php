@@ -6,9 +6,12 @@
 
 @section('principal')
 
-    <h1 class="mt-5">
-        WE ARE INGAME
-    </h1>
+    <div>
+        <h1 class="tituloingame" >
+            Estas en el quiz de "Game"
+        </h1>
+    </div>
+    
     {{-- passem el mode de preguntes i el num de preguntes --}}
     <principal-pregunta mode={{$mode}} num_preguntes={{$num_preguntes}}>
     </principal-pregunta>    
