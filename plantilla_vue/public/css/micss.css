@@ -204,6 +204,23 @@
     #boto-submit{
         font-size: 30px;
     }
+    
+    /*boton de lest go de game quiz*/
+    #botongamequiz{
+        margin-top: 20px;
+        margin-bottom: 60px;
+        border-radius: 50px;
+        font-size: 35px;
+        transition: 0.7s;
+    }
+
+    #botongamequiz:hover{
+        transform: scale(1.7);
+        background-color: white;
+        color: black;
+        border-radius: 5px;
+        transition: 0.7s;
+    }
 
 }
 
@@ -340,5 +357,10 @@
         padding-top: 10px;
         font-size: 22px;
         text-align: center;
+    }
+    
+    /*texto de game quiz menu*/
+    .textogamequiz h3{
+        font-size: 18px;
     }
 }

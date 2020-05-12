@@ -28,9 +28,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav w-100">
 
-            <a class="nav-item nav-link" href="{{ url('/') }}">INICIO</a>
-            <a class="nav-item nav-link" href="{{ url('/quiz') }}">QUIZ</a>
             <a class="nav-item nav-link" href="{{ url('/about') }}">ABOUT</a>
+            <a class="nav-item nav-link" href="{{ url('/quiz') }}">QUIZ</a>
+            <a class="nav-item nav-link" href="{{ url('/') }}">INICIO</a>
 
         </div>
     </div>
