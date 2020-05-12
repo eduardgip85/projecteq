@@ -36,7 +36,7 @@
                 dependiendo de tu puntuación se te asignara un rango. A ver si llegas a GLOBAL!!
                 </br></br>
 
-                <form action="{{ url('/quiz') }}">
+                <form action="{{ url('/menu') }}">
                     <input type="submit" id="botongo" class="btn btn-dark" value="LET'S GO" />
                 </form>
                 

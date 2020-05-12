@@ -9,7 +9,7 @@ class GameController extends Controller
 {
     //
     public function index(){
-        return view('game_mode.index');
+        return view('csgoquiz.game_mode.index');
     }
 
     public function ingame(){
@@ -18,6 +18,6 @@ class GameController extends Controller
         // quantes preguntes tindrà 
         $num_preguntes = "5";
         // retornem view amb les dades
-        return view('game_mode.ingame', compact('mode', 'num_preguntes'));
+        return view('csgoquiz.game_mode.ingame', compact('mode', 'num_preguntes'));
     }
 }

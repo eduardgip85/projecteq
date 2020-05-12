@@ -36,7 +36,7 @@ class PreguntasController extends Controller
         //$data['numeros'] = $arraynumeros;
 
         //return view('quiz.menu',$data);
-        return view('quiz.game', $data);
+        return view('csgoquiz.quiz.game', $data);
     }
 
     /**
