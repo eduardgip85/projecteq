@@ -71,7 +71,7 @@
                 // variable auxiliar per a accedir al component (this)
                 let me = this;
                 // passem la ruta (url) de la api amb el mode i numero de preguntes
-                axios.get('api/pregunta/' + this.mode + '/' + this.num_preguntes).then(function (response)
+                axios.get('api/pregunta/' + this.mode + '/1/' + this.num_preguntes).then(function (response)
                 {
                     //un cop les obtenim les passem a la variable preguntes
                     me.preguntes = response.data;

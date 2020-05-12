@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 // routes preguntes
 Route::apiResource('pregunta', 'Api\PreguntaController');
-Route::get('pregunta/{mode}/{num}', 'Api\PreguntaController@preguntes_mode');
+Route::get('pregunta/{mode}/{num}/{nivell}', 'Api\PreguntaController@preguntes_mode');
 
 
 Route::apiResource('resposta', 'Api\RespostaController');
