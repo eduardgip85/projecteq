@@ -1987,6 +1987,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mode", "num_preguntes"],
   data: function data() {
@@ -79227,12 +79236,25 @@ var render = function() {
             ],
             1
           )
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._m(0)
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { attrs: { id: "footer" } }, [
+      _c("div", { staticClass: "text-center" }, [
+        _vm._v("\n        © 2020 Copyright:\n    ")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -91823,8 +91845,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

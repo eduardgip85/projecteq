@@ -46,4 +46,13 @@
     
 </div>
 
+<footer class="" id="footer">
+
+  <div class="text-center">
+      <!-- anuncio -->
+      © 2020 Copyright:
+  </div>
+
+</footer>
+
 @endsection
