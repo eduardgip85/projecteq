@@ -10,7 +10,7 @@
 
 
     <h1>
-        MIlionari facil
+        MIlionari {{$nivell}}
     </h1>
     <principal-pregunta mode={{$mode}} num_preguntes={{$num_preguntes}} nivell={{$nivell}}>
     </principal-pregunta>   
