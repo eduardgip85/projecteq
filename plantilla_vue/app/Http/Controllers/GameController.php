@@ -17,7 +17,9 @@ class GameController extends Controller
         $mode = "game";
         // quantes preguntes tindrà 
         $num_preguntes = "5";
+        // nivell de les preguntes
+        $nivell = "1";
         // retornem view amb les dades
-        return view('csgoquiz.game_mode.ingame', compact('mode', 'num_preguntes'));
+        return view('csgoquiz.game_mode.ingame', compact('mode', 'num_preguntes', 'nivell'));
     }
 }

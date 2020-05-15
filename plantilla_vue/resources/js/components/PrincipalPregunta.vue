@@ -49,6 +49,7 @@
         props:[
             "mode",
             "num_preguntes",
+            "nivell"
         ],
         data(){
             return{
@@ -71,7 +72,7 @@
                 // variable auxiliar per a accedir al component (this)
                 let me = this;
                 // passem la ruta (url) de la api amb el mode i numero de preguntes
-                axios.get('api/pregunta/' + this.mode + '/1/' + this.num_preguntes).then(function (response)
+                axios.get('api/pregunta/' + this.mode + '/'+ this.nivell +'/' + this.num_preguntes).then(function (response)
                 {
                     //un cop les obtenim les passem a la variable preguntes
                     me.preguntes = response.data;
@@ -129,6 +130,7 @@
                 window.location.href = 'http://127.0.0.1:8000/quiz?'; 
             },
             guardar_resposta(resposta){ 
+                
                 this.respostes_usuari.push(resposta);  
                 this.canviar_pregunta();              
             }

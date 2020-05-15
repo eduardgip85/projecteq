@@ -13,7 +13,7 @@
     </div>
     
     {{-- passem el mode de preguntes i el num de preguntes --}}
-    <principal-pregunta mode={{$mode}} num_preguntes={{$num_preguntes}}>
+    <principal-pregunta mode={{$mode}} num_preguntes={{$num_preguntes}} nivell={{$nivell}}>
     </principal-pregunta>    
 
 @endsection
