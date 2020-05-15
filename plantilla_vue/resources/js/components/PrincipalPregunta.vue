@@ -14,7 +14,7 @@
         <!-- Menu per acxabar el joc-->
         <div v-if="!jugant" class="text-center">
             
-            <!-- taula -->
+            <!-- taula per al quiz -->
             <b-table-simple hover  responsive>
                 <b-thead head-variant="dark">
                     <b-tr>
@@ -33,9 +33,11 @@
                 </b-tbody>
             </b-table-simple>
             
+
             <a href="http://127.0.0.1:8000/quiz?">
                 <b-button>TORNAR INICI</b-button>
             </a>
+
             <a href="http://127.0.0.1:8000/game_mode?">
                 <b-button variant="success">TORNAR A JUGAR</b-button>
             </a>
@@ -81,9 +83,11 @@
                 // variable auxiliar per a accedir al component (this)
                 let me = this;
                 // passem la ruta (url) de la api amb el mode i numero de preguntes
+                debugger;
                 axios.get('api/pregunta/' + this.mode + '/'+ this.nivell +'/' + this.num_preguntes).then(function (response)
                 {
                     //un cop les obtenim les passem a la variable preguntes
+                    debugger;
                     me.preguntes = response.data;
                     me.preguntes = me.barrejar_respostes(me.preguntes);
                     me.pregunta = me.preguntes[0];
@@ -140,8 +144,17 @@
             },
             guardar_resposta(resposta){ 
                 
-                this.respostes_usuari.push(resposta);  
-                this.canviar_pregunta();              
+                if(this.mode == "millonario"){
+                    if(!resposta){
+                        this.respostes_usuari.push(resposta); 
+                        this.jugant = false;
+                    }
+                    
+                }else{
+                    this.respostes_usuari.push(resposta);  
+                    this.canviar_pregunta();              
+                }
+                
             }
         },
         created(){

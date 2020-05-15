@@ -46,6 +46,6 @@ Route::get('/game', 'GameController@index');
 Route::get('/game_mode', 'GameController@ingame');
 
 // MILIONARI
-Route::get('/millonario/facil', 'MillionareController@facil');
-Route::get('/millonario/normal', 'MillionareController@normal');
-Route::get('/millonario/dificil', 'MillionareController@dificil');
+Route::get('/mfacil', 'MillionareController@facil');
+Route::get('/mnormal', 'MillionareController@normal');
+Route::get('/mdificil', 'MillionareController@dificil');

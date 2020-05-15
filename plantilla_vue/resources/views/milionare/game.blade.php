@@ -6,6 +6,13 @@
 
 @section('principal')
 
-    <p>{{ $nivell}}</p>
+    {{-- Milionare --}}
+
+
+    <h1>
+        MIlionari facil
+    </h1>
+    <principal-pregunta mode={{$mode}} num_preguntes={{$num_preguntes}} nivell={{$nivell}}>
+    </principal-pregunta>   
 
 @endsection

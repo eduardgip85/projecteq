@@ -11,7 +11,7 @@
   <div class="card-deck" >
 
         <!-- Facil -->
-        <a onclick="window.location='{{ url('/millonario/facil') }}'" class="card text-center" id="card-boostrap">
+        <a onclick="window.location='{{ url('/mfacil') }}'" class="card text-center" id="card-boostrap">
                 
             <img class="card-img-top" src="/img/game.jpg" alt="Card image cap">
             <div class="card-body">        
@@ -23,7 +23,7 @@
         </a>
 
         <!-- Normal -->
-        <a onclick="window.location='{{ url('/millonario/normal') }}'" class="card text-center" id="card-boostrap">
+        <a onclick="window.location='{{ url('/mnormal') }}'" class="card text-center" id="card-boostrap">
             
             <img class="card-img-top" src="/img/game.jpg" alt="Card image cap">
             <div class="card-body">        
@@ -35,7 +35,7 @@
         </a>
             
         <!-- Dificl -->
-        <a onclick="window.location='{{ url('/millonario/dificil') }}'" class="card text-center" id="card-boostrap">
+        <a onclick="window.location='{{ url('/mdificil') }}'" class="card text-center" id="card-boostrap">
             
             <img class="card-img-top" src="/img/rankss.jpg" alt="Card image cap">
             <div class="card-body">
