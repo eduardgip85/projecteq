@@ -86,12 +86,12 @@
 
                 //fer api
                 let me = this;
-                debugger;
+                //debugger;
                 axios.get('api/resposta/' + this.resposta_usuari + '/' + "validar").then(function (response)
                 {
-                    debugger;
+                    //debugger;
                     //un cop les obtenim les passem a la variable preguntes
-                    me.resposta_validada = response.data[0];
+                    me.resposta_validada = response.data;
                     // nullejem la reposta del usuari
                     me.resposta_usuari = null;
                     // retornem la reposta com a event al component superior

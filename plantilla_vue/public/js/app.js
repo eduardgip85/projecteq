@@ -1998,6 +1998,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mode", "num_preguntes", "nivell"],
   data: function data() {
@@ -2007,7 +2020,10 @@ __webpack_require__.r(__webpack_exports__);
       num: 0,
       respostes_usuari: [],
       modalFinal: false,
-      jugant: true
+      jugant: true,
+      dineros: [500, 1000, 2000, 5000, 10000, 50000, 75000, 150000, 250000, 500000, 1000000],
+      current_money: 0,
+      respostes_correctes: ["1", "2", "3"]
     };
   },
   mounted: function mounted() {
@@ -2018,20 +2034,20 @@ __webpack_require__.r(__webpack_exports__);
     obternir_preguntes: function obternir_preguntes() {
       // variable auxiliar per a accedir al component (this)
       var me = this; // passem la ruta (url) de la api amb el mode i numero de preguntes
+      //debugger;
 
-      debugger;
       axios.get('api/pregunta/' + this.mode + '/' + this.nivell + '/' + this.num_preguntes).then(function (response) {
         //un cop les obtenim les passem a la variable preguntes
-        debugger;
+        //debugger;
         me.preguntes = response.data;
         me.preguntes = me.barrejar_respostes(me.preguntes);
         me.pregunta = me.preguntes[0];
-        me.num++;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     canviar_pregunta: function canviar_pregunta() {
+      this.num++;
       var me = this;
 
       if (this.num < this.preguntes.length) {
@@ -2039,10 +2055,8 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         //alert("game over");
         //this.modalFinal = true;
-        this.jugant = false;
+        this.jugant = false; //this.obernir_respostes_correctes();
       }
-
-      this.num++;
     },
     barrejar_respostes: function barrejar_respostes(preguntes) {
       for (var i = 0; i < preguntes.length; i++) {
@@ -2078,6 +2092,9 @@ __webpack_require__.r(__webpack_exports__);
         if (!resposta) {
           this.respostes_usuari.push(resposta);
           this.jugant = false;
+        } else {
+          this.current_money += this.dineros[this.num];
+          this.canviar_pregunta();
         }
       } else {
         this.respostes_usuari.push(resposta);
@@ -2178,12 +2195,12 @@ __webpack_require__.r(__webpack_exports__);
       //this.resposta = false;                
       // si la resposta es la correcta
       //fer api
-      var me = this;
-      debugger;
-      axios.get('api/resposta/' + this.resposta_usuari + '/' + "validar").then(function (response) {
-        debugger; //un cop les obtenim les passem a la variable preguntes
+      var me = this; //debugger;
 
-        me.resposta_validada = response.data[0]; // nullejem la reposta del usuari
+      axios.get('api/resposta/' + this.resposta_usuari + '/' + "validar").then(function (response) {
+        //debugger;
+        //un cop les obtenim les passem a la variable preguntes
+        me.resposta_validada = response.data; // nullejem la reposta del usuari
 
         me.resposta_usuari = null; // retornem la reposta com a event al component superior
 
@@ -79139,6 +79156,10 @@ var render = function() {
   return _c(
     "div",
     [
+      _vm.mode == "millonario"
+        ? _c("div", [_c("h1", [_vm._v(_vm._s(_vm.current_money) + " $")])])
+        : _vm._e(),
+      _vm._v(" "),
       _vm.jugant
         ? _c("secundari-pregunta", {
             attrs: { pregunta: _vm.pregunta },
@@ -79168,85 +79189,96 @@ var render = function() {
       ),
       _vm._v(" "),
       !_vm.jugant
-        ? _c(
-            "div",
-            { staticClass: "text-center" },
-            [
-              _c(
-                "b-table-simple",
-                { attrs: { hover: "", responsive: "" } },
-                [
-                  _c(
-                    "b-thead",
-                    { attrs: { "head-variant": "dark" } },
-                    [
-                      _c(
-                        "b-tr",
-                        [
-                          _c("b-th", [_vm._v("Pregunta")]),
-                          _vm._v(" "),
-                          _c("b-th", [_vm._v("Tu respuesta")]),
-                          _vm._v(" "),
-                          _c("b-th", [_vm._v("Respuesta correcta")])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-tbody",
-                    _vm._l(_vm.respostes_usuari, function(r_usuari, index) {
-                      return _c(
-                        "b-tr",
-                        { key: r_usuari.id },
-                        [
-                          _c("b-td", [
-                            _vm._v(
-                              " " + _vm._s(_vm.preguntes[index].text_pregunta)
+        ? _c("div", { staticClass: "text-center" }, [
+            _vm.mode == "millonario"
+              ? _c("div", [_c("h1", [_vm._v("JA ETS MILIONARI")])])
+              : _c(
+                  "div",
+                  [
+                    _c(
+                      "b-table-simple",
+                      { attrs: { hover: "", responsive: "" } },
+                      [
+                        _c(
+                          "b-thead",
+                          { attrs: { "head-variant": "dark" } },
+                          [
+                            _c(
+                              "b-tr",
+                              [
+                                _c("b-th", [_vm._v("Pregunta")]),
+                                _vm._v(" "),
+                                _c("b-th", [_vm._v("Tu respuesta")]),
+                                _vm._v(" "),
+                                _c("b-th", [_vm._v("Respuesta correcta")])
+                              ],
+                              1
                             )
-                          ]),
-                          _vm._v(" "),
-                          r_usuari
-                            ? _c("b-td", { attrs: { variant: "success" } }, [
-                                _vm._v("CORRECTO")
-                              ])
-                            : _c("b-td", { attrs: { variant: "danger" } }, [
-                                _vm._v("INCORRECTO")
-                              ]),
-                          _vm._v(" "),
-                          _c("b-td", [_vm._v("CHOCOLATE")])
-                        ],
-                        1
-                      )
-                    }),
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                { attrs: { href: "http://127.0.0.1:8000/quiz?" } },
-                [_c("b-button", [_vm._v("TORNAR INICI")])],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                { attrs: { href: "http://127.0.0.1:8000/game_mode?" } },
-                [
-                  _c("b-button", { attrs: { variant: "success" } }, [
-                    _vm._v("TORNAR A JUGAR")
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-tbody",
+                          _vm._l(_vm.respostes_usuari, function(
+                            r_usuari,
+                            index
+                          ) {
+                            return _c(
+                              "b-tr",
+                              { key: r_usuari.id },
+                              [
+                                _c("b-td", [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(_vm.preguntes[index].text_pregunta)
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                r_usuari[0]
+                                  ? _c(
+                                      "b-td",
+                                      { attrs: { variant: "success" } },
+                                      [_vm._v("CORRECTO")]
+                                    )
+                                  : _c(
+                                      "b-td",
+                                      { attrs: { variant: "danger" } },
+                                      [_vm._v("INCORRECTO")]
+                                    ),
+                                _vm._v(" "),
+                                _c("b-td", [_vm._v(_vm._s(r_usuari[1]))])
+                              ],
+                              1
+                            )
+                          }),
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      { attrs: { href: "http://127.0.0.1:8000/quiz?" } },
+                      [_c("b-button", [_vm._v("TORNAR INICI")])],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      { attrs: { href: "http://127.0.0.1:8000/game_mode?" } },
+                      [
+                        _c("b-button", { attrs: { variant: "success" } }, [
+                          _vm._v("TORNAR A JUGAR")
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+          ])
         : _vm._e(),
       _vm._v(" "),
       _vm._m(0)

@@ -111,6 +111,6 @@ class RespostaController extends Controller
             $correcte = true;
         }
 
-        return [$correcte];
+        return [$correcte, $pregunta->resposta_correcta];
     }
 }

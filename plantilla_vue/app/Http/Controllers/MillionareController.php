@@ -12,7 +12,7 @@ class MillionareController extends Controller
         // posarem el model del joc
         $mode = "millonario";
          // quantes preguntes tindrà 
-         $num_preguntes = "1";
+         $num_preguntes = "2";
         // nivell
         $nivell = "1";
        
