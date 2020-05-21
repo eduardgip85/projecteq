@@ -79261,7 +79261,7 @@ var render = function() {
                     _c(
                       "a",
                       { attrs: { href: "http://127.0.0.1:8000/quiz?" } },
-                      [_c("b-button", [_vm._v("TORNAR INICI")])],
+                      [_c("b-button", [_vm._v("VOLVER INICIO")])],
                       1
                     ),
                     _vm._v(" "),
@@ -79270,7 +79270,7 @@ var render = function() {
                       { attrs: { href: "http://127.0.0.1:8000/game_mode?" } },
                       [
                         _c("b-button", { attrs: { variant: "success" } }, [
-                          _vm._v("TORNAR A JUGAR")
+                          _vm._v("VOLVER A JUGAR")
                         ])
                       ],
                       1
@@ -79401,7 +79401,7 @@ var staticRenderFns = [
           staticStyle: { display: "block" },
           attrs: { type: "submit", id: "boto-submit" }
         },
-        [_vm._v("Guardar Resposta")]
+        [_vm._v("Guardar Respuesta")]
       )
     ])
   }

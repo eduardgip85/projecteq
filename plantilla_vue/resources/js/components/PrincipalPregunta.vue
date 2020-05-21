@@ -43,11 +43,11 @@
                     </b-tbody>
                 </b-table-simple>
                 <a href="http://127.0.0.1:8000/quiz?">
-                    <b-button>TORNAR INICI</b-button>
+                    <b-button>VOLVER INICIO</b-button>
                 </a>
 
                 <a href="http://127.0.0.1:8000/game_mode?">
-                    <b-button variant="success">TORNAR A JUGAR</b-button>
+                    <b-button variant="success">VOLVER A JUGAR</b-button>
                 </a>
             </div>
             

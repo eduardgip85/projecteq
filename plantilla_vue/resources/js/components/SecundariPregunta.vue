@@ -41,7 +41,7 @@
                 id="boto-submit"
                 style="display: block;"
                 class="btn btn-primary"
-                >Guardar Resposta</button>
+                >Guardar Respuesta</button>
             </div>
 
         </form>    
