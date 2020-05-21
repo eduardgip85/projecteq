@@ -29,7 +29,7 @@
         <div class="navbar-nav w-100">
 
             <a class="nav-item nav-link" href="{{ url('/about') }}">ABOUT</a>
-            <a class="nav-item nav-link" href="{{ url('/quiz') }}">QUIZ</a>
+            <a class="nav-item nav-link" href="{{ url('/menu') }}">QUIZ</a>
             <a class="nav-item nav-link" href="{{ url('/') }}">INICIO</a>
 
         </div>
