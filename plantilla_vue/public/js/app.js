@@ -2011,6 +2011,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mode", "num_preguntes", "nivell"],
   data: function data() {
@@ -2019,11 +2022,9 @@ __webpack_require__.r(__webpack_exports__);
       pregunta: null,
       num: 0,
       respostes_usuari: [],
-      modalFinal: false,
       jugant: true,
       dineros: [500, 1000, 2000, 5000, 10000, 50000, 75000, 150000, 250000, 500000, 1000000],
-      current_money: 0,
-      respostes_correctes: ["1", "2", "3"]
+      current_money: 0
     };
   },
   mounted: function mounted() {
@@ -2088,8 +2089,11 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = 'http://127.0.0.1:8000/quiz?';
     },
     guardar_resposta: function guardar_resposta(resposta) {
+      debugger;
+
       if (this.mode == "millonario") {
-        if (!resposta) {
+        if (!resposta[0]) {
+          debugger;
           this.respostes_usuari.push(resposta);
           this.jugant = false;
         } else {
@@ -79167,31 +79171,15 @@ var render = function() {
           })
         : _vm._e(),
       _vm._v(" "),
-      _c(
-        "b-modal",
-        {
-          attrs: { id: "modal-hospital", title: "", size: "lg" },
-          on: {
-            ok: _vm.redirigir,
-            cancel: _vm.redirigir,
-            hide: _vm.redirigir,
-            close: _vm.redirigir
-          },
-          model: {
-            value: _vm.modalFinal,
-            callback: function($$v) {
-              _vm.modalFinal = $$v
-            },
-            expression: "modalFinal"
-          }
-        },
-        [_vm._v("\n        S'ha acabat el joc\n    ")]
-      ),
-      _vm._v(" "),
       !_vm.jugant
         ? _c("div", { staticClass: "text-center" }, [
             _vm.mode == "millonario"
-              ? _c("div", [_c("h1", [_vm._v("JA ETS MILIONARI")])])
+              ? _c("div", [
+                  _vm.respostes_usuari[_vm.respostes_usuari.length - 1][0] ==
+                  false
+                    ? _c("div", [_c("h1", [_vm._v("F PA TU CUERPO")])])
+                    : _c("div", [_c("h1", [_vm._v("JA ETS MILIONARI")])])
+                ])
               : _c(
                   "div",
                   [

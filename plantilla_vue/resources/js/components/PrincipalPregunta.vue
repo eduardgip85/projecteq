@@ -11,16 +11,19 @@
             @retornar_resposta="guardar_resposta">
         </secundari-pregunta>
 
-        <!-- modal per s'acabi el joc -->
-        <b-modal id="modal-hospital" @ok="redirigir" @cancel="redirigir" @hide="redirigir" @close="redirigir" title="" size="lg" v-model="modalFinal">
-            S'ha acabat el joc
-        </b-modal>
-
+      
         <!-- Menu per acxabar el joc-->
         <div v-if="!jugant" class="text-center">
             
             <div v-if="mode == 'millonario'">
-                <h1>JA ETS MILIONARI</h1>
+                <div v-if="respostes_usuari[respostes_usuari.length-1][0] == false">
+                    <h1>F PA TU CUERPO</h1>
+                </div>
+
+                <div v-else>
+                    <h1>JA ETS MILIONARI</h1>
+                </div>
+                
             </div>
 
             <div v-else>    
@@ -81,12 +84,10 @@
                pregunta: null,
                num: 0,                
                respostes_usuari: [],
-               modalFinal: false,
                jugant: true,
                dineros: [500, 1000, 2000, 5000, 10000, 50000, 
                         75000, 150000, 250000, 500000, 1000000],
                current_money: 0,
-               respostes_correctes: ["1", "2", "3"]
             }
         },
         mounted() {
@@ -160,9 +161,10 @@
                 window.location.href = 'http://127.0.0.1:8000/quiz?'; 
             },
             guardar_resposta(resposta){ 
-                
+                debugger;
                 if(this.mode == "millonario"){
-                    if(!resposta){
+                    if(!resposta[0]){
+                        debugger;
                         this.respostes_usuari.push(resposta); 
                         this.jugant = false;
                     }else{
