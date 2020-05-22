@@ -2014,6 +2014,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mode", "num_preguntes", "nivell"],
   data: function data() {
@@ -2024,7 +2042,9 @@ __webpack_require__.r(__webpack_exports__);
       respostes_usuari: [],
       jugant: true,
       dineros: [500, 1000, 2000, 5000, 10000, 50000, 75000, 150000, 250000, 500000, 1000000],
-      current_money: 0
+      current_money: 0,
+      plantado: false,
+      se_puede_plantar: false
     };
   },
   mounted: function mounted() {
@@ -2049,6 +2069,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     canviar_pregunta: function canviar_pregunta() {
       this.num++;
+
+      if (this.num == 1) {
+        this.se_puede_plantar = true;
+      } else {
+        this.se_puede_plantar = false;
+      }
+
       var me = this;
 
       if (this.num < this.preguntes.length) {
@@ -2094,16 +2121,21 @@ __webpack_require__.r(__webpack_exports__);
       if (this.mode == "millonario") {
         if (!resposta[0]) {
           debugger;
-          this.respostes_usuari.push(resposta);
           this.jugant = false;
         } else {
-          this.current_money += this.dineros[this.num];
+          this.current_money = this.dineros[this.num];
           this.canviar_pregunta();
         }
+
+        this.respostes_usuari.push(resposta);
       } else {
         this.respostes_usuari.push(resposta);
         this.canviar_pregunta();
       }
+    },
+    plantarse: function plantarse() {
+      this.plantado = true;
+      this.jugant = false;
     }
   },
   created: function created() {
@@ -2189,6 +2221,7 @@ __webpack_require__.r(__webpack_exports__);
     // agafem el titol de la pregunta i limposme el valor de la pregunta 
 
     document.getElementById("titol-pregunta").innerHTML = this.pregunta.text_pregunta;
+    document.getElementById("boto-submit").disabled = false;
   },
   methods: {
     mostrar_pregunta: function mostrar_pregunta() {
@@ -2199,6 +2232,7 @@ __webpack_require__.r(__webpack_exports__);
       //this.resposta = false;                
       // si la resposta es la correcta
       //fer api
+      document.getElementById("boto-submit").disabled = true;
       var me = this; //debugger;
 
       axios.get('api/resposta/' + this.resposta_usuari + '/' + "validar").then(function (response) {
@@ -2209,6 +2243,7 @@ __webpack_require__.r(__webpack_exports__);
         me.resposta_usuari = null; // retornem la reposta com a event al component superior
 
         me.$emit('retornar_resposta', me.resposta_validada);
+        document.getElementById("boto-submit").disabled = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -79161,7 +79196,25 @@ var render = function() {
     "div",
     [
       _vm.mode == "millonario"
-        ? _c("div", [_c("h1", [_vm._v(_vm._s(_vm.current_money) + " $")])])
+        ? _c("div", { attrs: { align: "right" } }, [
+            _c("h1", [_vm._v(_vm._s(_vm.current_money) + " $")])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.mode == "millonario" && _vm.se_puede_plantar
+        ? _c("div", { attrs: { align: "center" } }, [
+            _c(
+              "h1",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.plantarse()
+                  }
+                }
+              },
+              [_vm._v("PLANTARSE")]
+            )
+          ])
         : _vm._e(),
       _vm._v(" "),
       _vm.jugant
@@ -79175,10 +79228,48 @@ var render = function() {
         ? _c("div", { staticClass: "text-center" }, [
             _vm.mode == "millonario"
               ? _c("div", [
-                  _vm.respostes_usuari[_vm.respostes_usuari.length - 1][0] ==
-                  false
-                    ? _c("div", [_c("h1", [_vm._v("F PA TU CUERPO")])])
-                    : _c("div", [_c("h1", [_vm._v("JA ETS MILIONARI")])])
+                  _vm.plantado
+                    ? _c(
+                        "div",
+                        { attrs: { align: "center" } },
+                        [
+                          _c("h1", [_vm._v("¿Seguro que te quieres plantar?")]),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              attrs: { variant: "success" },
+                              on: {
+                                click: function($event) {
+                                  _vm.plantado = false
+                                }
+                              }
+                            },
+                            [_vm._v("SI")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              attrs: { variant: "danger" },
+                              on: {
+                                click: function($event) {
+                                  _vm.jugant = true
+                                }
+                              }
+                            },
+                            [_vm._v("NO")]
+                          )
+                        ],
+                        1
+                      )
+                    : _c("div", [
+                        _vm.respostes_usuari[
+                          _vm.respostes_usuari.length - 1
+                        ][0] == false
+                          ? _c("div", [_c("h1", [_vm._v("AHH TE BAÑASTE")])])
+                          : _c("div", [_c("h1", [_vm._v("GANASTE")])])
+                      ])
                 ])
               : _c(
                   "div",
@@ -91876,8 +91967,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

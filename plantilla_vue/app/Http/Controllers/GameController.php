@@ -16,7 +16,7 @@ class GameController extends Controller
         // posarem el model del joc
         $mode = "game";
         // quantes preguntes tindrà 
-        $num_preguntes = "3";
+        $num_preguntes = "10";
         // nivell de les preguntes
         $nivell = "1";
         // retornem view amb les dades

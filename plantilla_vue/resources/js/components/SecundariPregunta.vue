@@ -69,14 +69,15 @@
             //this.mostrar_pregunta();        
 
             // agafem el titol de la pregunta i limposme el valor de la pregunta 
-            document.getElementById("titol-pregunta").innerHTML = this.pregunta.text_pregunta;  
+            document.getElementById("titol-pregunta").innerHTML = this.pregunta.text_pregunta; 
+            document.getElementById("boto-submit").disabled = false;   
         },
         methods:
         {
             mostrar_pregunta()
             {
                 
-                document.getElementById("titol-pregunta").innerHTML = this.pregunta.text_pregunta;  
+                document.getElementById("titol-pregunta").innerHTML = this.pregunta.text_pregunta;
             },
             vaidar_resposta()
             {
@@ -85,6 +86,7 @@
                 // si la resposta es la correcta
 
                 //fer api
+                document.getElementById("boto-submit").disabled = true;
                 let me = this;
                 //debugger;
                 axios.get('api/resposta/' + this.resposta_usuari + '/' + "validar").then(function (response)
@@ -96,6 +98,7 @@
                     me.resposta_usuari = null;
                     // retornem la reposta com a event al component superior
                     me.$emit('retornar_resposta', me.resposta_validada);  
+                    document.getElementById("boto-submit").disabled = false;  
                 })
                 .catch(function (error)
                 {

@@ -1,8 +1,13 @@
 <template>
     <div>
         <!-- dineros -->
-        <div v-if="mode == 'millonario'">
+        <div align="right" v-if="mode == 'millonario'">
             <h1>{{ current_money}} $</h1>
+        </div>
+
+        <!-- plantarse -->
+        <div align="center" v-if="mode == 'millonario' && se_puede_plantar">
+            <h1  @click="plantarse()" >PLANTARSE</h1>
         </div>
 
         <secundari-pregunta 
@@ -15,14 +20,27 @@
         <!-- Menu per acxabar el joc-->
         <div v-if="!jugant" class="text-center">
             
-            <div v-if="mode == 'millonario'">
-                <div v-if="respostes_usuari[respostes_usuari.length-1][0] == false">
-                    <h1>F PA TU CUERPO</h1>
-                </div>
+            <div  v-if="mode == 'millonario'">
+                <!-- plantarse -->
+                <div align="center" v-if="plantado">
 
-                <div v-else>
-                    <h1>JA ETS MILIONARI</h1>
+                    <h1>¿Seguro que te quieres plantar?</h1>
+                    
+                    <b-button @click="plantado = false" variant="success">SI</b-button>
+                    
+                    <b-button @click="jugant= true" variant="danger">NO</b-button>
+                    
                 </div>
+                <div v-else>
+                    <div v-if="respostes_usuari[respostes_usuari.length-1][0] == false">
+                        <h1>AHH TE BAÑASTE</h1>
+                    </div>
+
+                    <div v-else>
+                        <h1>GANASTE</h1>
+                    </div>
+                </div>
+                
                 
             </div>
 
@@ -31,7 +49,7 @@
                 <b-table-simple hover  responsive>
                     <b-thead head-variant="dark">
                         <b-tr>
-                            <b-th >Pregunta</b-th>
+                            <b-th>Pregunta</b-th>
                             <b-th>Tu respuesta</b-th>
                             <b-th>Respuesta correcta</b-th>
                         </b-tr>
@@ -88,6 +106,8 @@
                dineros: [500, 1000, 2000, 5000, 10000, 50000, 
                         75000, 150000, 250000, 500000, 1000000],
                current_money: 0,
+               plantado: false,
+               se_puede_plantar: false
             }
         },
         mounted() {
@@ -116,7 +136,13 @@
                 })
             },
              canviar_pregunta(){
-                this.num++;                
+                this.num++;
+                if(this.num == 1){
+                        this.se_puede_plantar = true;
+                }else{
+                        this.se_puede_plantar = false;
+                }  
+
                 var me = this;
                 if(this.num < this.preguntes.length ){
                     me.pregunta = me.preguntes[this.num]
@@ -165,12 +191,12 @@
                 if(this.mode == "millonario"){
                     if(!resposta[0]){
                         debugger;
-                        this.respostes_usuari.push(resposta); 
                         this.jugant = false;
                     }else{
-                        this.current_money += this.dineros[this.num] ;
+                        this.current_money = this.dineros[this.num];                         
                         this.canviar_pregunta();
                     }
+                    this.respostes_usuari.push(resposta);
                     
                 }else{
                     this.respostes_usuari.push(resposta); 
@@ -179,6 +205,10 @@
                
                 
             },
+            plantarse(){
+                this.plantado = true;
+                this.jugant = false;
+            }
         },
         created(){
             this.obternir_preguntes();
