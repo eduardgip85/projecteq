@@ -11,6 +11,14 @@
     </h1>
     <div class="textogamequiz">
         <p>
+            <h3>
+                Bienvenidos al QUIZ de CSGO donde si creias que sabias todo de este juego
+                aqui tienes muchisimas preguntas sobre Counter Strike Global Offensive 
+                ( preguntas de armas, preguntas del juego entre rondas, preguntas
+                sobre los mapas que se juegan, etc...).
+            </h3>
+        </p>
+        <p>
             <h3>Consta de 10 preguntas!</h3>
         </p>
         <p>

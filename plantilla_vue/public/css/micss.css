@@ -88,7 +88,13 @@
     #card-boostrap:hover{
         background-color: darkgray;
         cursor: pointer;
-        transform:  scale(1.1);
+        transform:  scale(1.07);
+        transition: 0.5s;
+    }
+
+    /* per quan deixi el hover */
+    #card-boostrap{
+        transition: 0.5s;
     }
 
 

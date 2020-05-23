@@ -1,7 +1,7 @@
 @extends('templates.main')
 
 @section('titulo')
-    Game Info
+    Game
 @endsection
 
 @section('principal')

@@ -1,7 +1,7 @@
 @extends('templates.main')
 
 @section('titulo')
-    CSGOQUIZ
+    MASTER QUIZ
 @endsection
 
 @section('principal')
@@ -18,23 +18,36 @@
           <div class="col-md-7 col-sm-12">
             <div class="center text-main">
                 
-                <h2>
-                    BIENVENIDOS AL GLOBAL QUIZ CSGO ELITE! 
-                </h2>
-
-                Bienvenidos al QUIZ de CSGO donde si creias que sabias todo de este juego
-                aqui tienes muchisimas preguntas sobre los torneos de Counter Strike Global Offensive
-                y sobre el mismo juego ( preguntas de armas, preguntas del juego entre rondas, preguntas
-                sobre los mapas que se juegan, etc...).
-                </br></br>
-                Si crees que eres el dios del aim, si crees que te pareces a S1mple, vamos a ver si 
-                aciertas todas las preguntas correctamente.
-                </br></br>
-                Cada sección consta de 10 preguntas, totalmente aleatorias cada vez que inicias un quiz
-                </br></br>
-                Y si quieres saber tu RANGO , prueba el RANK QUIZ donde las 10 preguntas seran con tiempo y 
-                dependiendo de tu puntuación se te asignara un rango. A ver si llegas a GLOBAL!!
-                </br></br>
+                <h1>
+                    BIENVENIDOS A <b>MASTER QUIZ</b> 
+                </h1>
+                <p>
+                    <h4>
+                        Bienvenidos a la aplicación de Master Quiz, donde pondrás a prueba tu <b>Intelecto</b>,
+                         tu <b>Rapidez</b> y tu toma de decisión para llegar a pasar todas las preguntas y ser 
+                         el mejor MASTER QUIZ de la historia!
+                    </h4>
+                </p>
+                <p>
+                    <h4>
+                        En esta app web, podrás escoger entre 2 temas (de momento), uno es el <b>Millonario Quiz</b>
+                        dónde jugarás un simulador para ganar 1M de Euros y que consta de 12 preguntas y que cada 4 
+                        preguntas tienes la opción de plantarte por una cantidad menor.
+                    </h4>
+                </p>
+                <p>
+                    <h4>
+                        Y el otro tema es el <b>CSGO Quiz</b>, dónde tendrás que acertar todas las preguntar sobre el 
+                        juego de COUNTER STRIKE GLOBAL OFFENSIVE.
+                    </h4>
+                </p>
+                <p>
+                    <h3>
+                        CREES QUE PODRÁS GANAR EN ALGUNO?
+                    </h3>
+                </p>
+                
+               
 
                 <form action="{{ url('/menu') }}">
                     <input type="submit" id="botongo" class="btn btn-dark" value="LET'S GO" />

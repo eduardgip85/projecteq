@@ -1,7 +1,7 @@
 @extends('templates.main')
 
 @section('titulo')
-    CSGOQUIZ
+  CSGO QUIZ
 @endsection
 
 @section('principal')
@@ -12,10 +12,11 @@
 
       <a onclick="" class="card text-center" id="card-boostrap">
         
-          <img class="card-img-top" src="/img/tournament.jpg" alt="Card image cap">
+          <img class="card-img-top" src="/img/soon.jpg" alt="Card image cap">
           <div class="card-body">          
             <button type="button" class="btn boto-secondari" action>
               <h5 class="mt-2">Tournament Quiz</h5>
+              <h5 class="mt-2">Coming Soon</h5>
             </button>
           </div>
         
@@ -35,10 +36,11 @@
 
       <a onclick="" class="card text-center" id="card-boostrap">
         
-          <img class="card-img-top" src="/img/rankss.jpg" alt="Card image cap">
+          <img class="card-img-top" src="/img/soon.jpg" alt="Card image cap">
           <div class="card-body">
             <button type="button" class="btn  boto-secondari" action>
               <h5 class="mt-2">What is your rank?</h5>
+              <h5 class="mt-2">Coming Soon</h5>
             </button>
           </div>
         
