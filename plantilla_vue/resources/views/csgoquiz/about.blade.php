@@ -39,18 +39,20 @@
 
                 <div class="card" style="border-radius: 5px;background-color: #c5c5c5;padding: 10px;">
     
-                    <form action="" method="POST">
+                    <form action="https://formspree.io/eduardgip85@gmail.com" method="POST">
     
-                        @csrf
                         <h3>Quieres contactar conmigo?</h3>
-    
+
                         <p>Asunto de tu mail</p> 
-                        <input type="text" name="asunto" placeholder="El asunto">
+                        <input type="text" class="single-input" placeholder="Asunto" name="name" value="" required>
+
+                        <p>Tu email</p> 
+                        <input type="email" class="single-input" placeholder="Tu email" name="_replyto" value="" required>
     
                         <p>Que quieres preguntarme o decirme?</p>
-                        <textarea name="mensaje" rows="5" cols="25"></textarea><br />
+                        <textarea name="message" rows="5" placeholder="Escribe algo.." cols="25"></textarea><br />
     
-                        <button type="submit" class="btn btn-dark" name="mail">Enviar</button>
+                        <button type="submit" class="btn btn-dark" name="mail" value="submit">Enviar</button>
     
                     </form>
                     
