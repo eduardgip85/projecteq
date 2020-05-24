@@ -10,7 +10,7 @@
         <div class="col-md-5 col-sm-12">
             <div class="center">
                 <div class=""  >
-                    <img src=" {{ asset('img/logoMQ2.PNG') }}" alt="" class="imgcenter">
+                    <img src=" {{ asset('img/logoMQ3.PNG') }}" alt="" class="imgcenter">
                 </div>
                 
             </div>
