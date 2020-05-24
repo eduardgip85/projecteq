@@ -2105,7 +2105,7 @@ __webpack_require__.r(__webpack_exports__);
     canviar_pregunta: function canviar_pregunta() {
       this.num++;
 
-      if (this.num == 5 || num == 8) {
+      if (this.num == 5 || this.num == 8) {
         this.se_puede_plantar = true;
       } else {
         this.se_puede_plantar = false;
