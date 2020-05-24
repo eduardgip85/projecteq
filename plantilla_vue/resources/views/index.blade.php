@@ -37,8 +37,8 @@
                 </p>
                 <p>
                     <h4>
-                        Y el otro tema es el <b>CSGO Quiz</b>, dónde tendrás que acertar todas las preguntar sobre el 
-                        juego de COUNTER STRIKE GLOBAL OFFENSIVE.
+                        El otro tema es el <b>CSGO Quiz</b>, dónde tendrás que acertar todas las preguntar sobre el 
+                        famoso juego de disparos COUNTER STRIKE GLOBAL OFFENSIVE.
                     </h4>
                 </p>
                 <p>

@@ -79338,7 +79338,7 @@ var render = function() {
                                     _c(
                                       "b-card-text",
                                       [
-                                        _c("h1", [_vm._v("Que lastima...")]),
+                                        _c("h1", [_vm._v("Qué lastima...")]),
                                         _vm._v(" "),
                                         _c("p", [
                                           _vm._v(

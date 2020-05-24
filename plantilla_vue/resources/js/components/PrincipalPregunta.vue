@@ -44,7 +44,7 @@
                                 class="text-center"
                                 >
                             <b-card-text>
-                                <h1>Que lastima...</h1>
+                                <h1>Qué lastima...</h1>
                                 <p> ¡Lo has peridio TODO, pero puedes volver a probar, a ver si tienes as suerte!</p>   
                                 <br>
                                 <a href="http://127.0.0.1:8000/milionari">
