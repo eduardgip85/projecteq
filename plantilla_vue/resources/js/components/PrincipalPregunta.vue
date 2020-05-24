@@ -1,13 +1,16 @@
 <template>
     <div>
         <!-- dineros -->
-        <div align="right" v-if="mode == 'millonario'">
-            <h1>{{ current_money}} $</h1>
+        <div v-if="mode == 'millonario' && jugant">
+            <h3>Dinero actual: {{ current_money}} €</h3>
+            <h3>{{ 12 - num }} preguntas para ser millonario</h3>
         </div>
 
         <!-- plantarse -->
         <div align="center" v-if="mode == 'millonario' && se_puede_plantar">
-            <h1  @click="plantarse()" >PLANTARSE</h1>
+            <b-button variant="warning" @click="plantarse()">
+                <h3>PLANTARSE</h3>
+            </b-button>
         </div>
 
         <secundari-pregunta 
@@ -26,18 +29,52 @@
 
                     <h1>¿Seguro que te quieres plantar?</h1>
                     
-                    <b-button @click="plantado = false" variant="success">SI</b-button>
+                    <b-button @click="plantado = false, se_puede_plantar=false" variant="success">SI</b-button>
                     
                     <b-button @click="jugant= true" variant="danger">NO</b-button>
                     
                 </div>
                 <div v-else>
-                    <div v-if="respostes_usuari[respostes_usuari.length-1][0] == false">
-                        <h1>AHH TE BAÑASTE</h1>
+                    <div v-if="respostes_usuari[respostes_usuari.length-1][0] == false" class="text-center">
+                        <b-card 
+                                header="MENSAJE"
+                                header-text-variant="white"
+                                header-tag="header"
+                                header-bg-variant="danger" 
+                                class="text-center"
+                                >
+                            <b-card-text>
+                                <h1>Que lastima...</h1>
+                                <p> ¡Lo has peridio TODO, pero puedes volver a probar, a ver si tienes as suerte!</p>   
+                                <br>
+                                <a href="http://127.0.0.1:8000/milionari">
+                                    <b-button>VOLVER INICIO</b-button>
+                                </a>
+                                <b-button @click="refresh()" variant="success">VOLVER A JUGAR</b-button>
+                            </b-card-text>
+                        </b-card>
                     </div>
 
                     <div v-else>
-                        <h1>GANASTE</h1>
+                         <b-card header="MENSAJE"
+                                header-text-variant="white"
+                                header-tag="header"
+                                header-bg-variant="success" 
+                                class="text-center">
+                        <b-card-text>
+                            <h1>¡Felicidades!</h1>
+                            <p> Has conseguido la cantidad de:</p> 
+                            <br>  
+                            <h2> {{ current_money}} €</h2>
+                            <br>
+                            <a href="http://127.0.0.1:8000/milionari">
+                                    <b-button>VOLVER INICIO</b-button>
+                                </a>
+                            <b-button @click="refresh()" variant="success">VOLVER A JUGAR</b-button>                       
+                            
+
+                        </b-card-text>
+                    </b-card>
                     </div>
                 </div>
                 
@@ -67,9 +104,7 @@
                     <b-button>VOLVER INICIO</b-button>
                 </a>
 
-                <a href="http://127.0.0.1:8000/game_mode?">
-                    <b-button variant="success">VOLVER A JUGAR</b-button>
-                </a>
+                <b-button @click="refresh()" variant="success">VOLVER A JUGAR</b-button>
             </div>
             
             
@@ -103,7 +138,7 @@
                num: 0,                
                respostes_usuari: [],
                jugant: true,
-               dineros: [500, 1000, 2000, 5000, 10000, 50000, 
+               dineros: [100, 500, 1000, 2000, 5000, 10000, 50000, 
                         75000, 150000, 250000, 500000, 1000000],
                current_money: 0,
                plantado: false,
@@ -137,7 +172,7 @@
             },
              canviar_pregunta(){
                 this.num++;
-                if(this.num == 1){
+                if(this.num == 5 || num == 8){
                         this.se_puede_plantar = true;
                 }else{
                         this.se_puede_plantar = false;
@@ -208,10 +243,15 @@
             plantarse(){
                 this.plantado = true;
                 this.jugant = false;
+                this.se_puede_plantar = false;
+            },
+            refresh(){
+                window.location.reload();
             }
         },
         created(){
             this.obternir_preguntes();
-        }
+        },
+    
     }
 </script>

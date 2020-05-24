@@ -2032,6 +2032,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["mode", "num_preguntes", "nivell"],
   data: function data() {
@@ -2041,7 +2076,7 @@ __webpack_require__.r(__webpack_exports__);
       num: 0,
       respostes_usuari: [],
       jugant: true,
-      dineros: [500, 1000, 2000, 5000, 10000, 50000, 75000, 150000, 250000, 500000, 1000000],
+      dineros: [100, 500, 1000, 2000, 5000, 10000, 50000, 75000, 150000, 250000, 500000, 1000000],
       current_money: 0,
       plantado: false,
       se_puede_plantar: false
@@ -2070,7 +2105,7 @@ __webpack_require__.r(__webpack_exports__);
     canviar_pregunta: function canviar_pregunta() {
       this.num++;
 
-      if (this.num == 1) {
+      if (this.num == 5 || num == 8) {
         this.se_puede_plantar = true;
       } else {
         this.se_puede_plantar = false;
@@ -2136,6 +2171,10 @@ __webpack_require__.r(__webpack_exports__);
     plantarse: function plantarse() {
       this.plantado = true;
       this.jugant = false;
+      this.se_puede_plantar = false;
+    },
+    refresh: function refresh() {
+      window.location.reload();
     }
   },
   created: function created() {
@@ -79195,26 +79234,38 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.mode == "millonario"
-        ? _c("div", { attrs: { align: "right" } }, [
-            _c("h1", [_vm._v(_vm._s(_vm.current_money) + " $")])
+      _vm.mode == "millonario" && _vm.jugant
+        ? _c("div", [
+            _c("h3", [
+              _vm._v("Dinero actual: " + _vm._s(_vm.current_money) + " €")
+            ]),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v(_vm._s(12 - _vm.num) + " preguntas para ser millonario")
+            ])
           ])
         : _vm._e(),
       _vm._v(" "),
       _vm.mode == "millonario" && _vm.se_puede_plantar
-        ? _c("div", { attrs: { align: "center" } }, [
-            _c(
-              "h1",
-              {
-                on: {
-                  click: function($event) {
-                    return _vm.plantarse()
+        ? _c(
+            "div",
+            { attrs: { align: "center" } },
+            [
+              _c(
+                "b-button",
+                {
+                  attrs: { variant: "warning" },
+                  on: {
+                    click: function($event) {
+                      return _vm.plantarse()
+                    }
                   }
-                }
-              },
-              [_vm._v("PLANTARSE")]
-            )
-          ])
+                },
+                [_c("h3", [_vm._v("PLANTARSE")])]
+              )
+            ],
+            1
+          )
         : _vm._e(),
       _vm._v(" "),
       _vm.jugant
@@ -79241,7 +79292,8 @@ var render = function() {
                               attrs: { variant: "success" },
                               on: {
                                 click: function($event) {
-                                  _vm.plantado = false
+                                  ;(_vm.plantado = false),
+                                    (_vm.se_puede_plantar = false)
                                 }
                               }
                             },
@@ -79267,8 +79319,147 @@ var render = function() {
                         _vm.respostes_usuari[
                           _vm.respostes_usuari.length - 1
                         ][0] == false
-                          ? _c("div", [_c("h1", [_vm._v("AHH TE BAÑASTE")])])
-                          : _c("div", [_c("h1", [_vm._v("GANASTE")])])
+                          ? _c(
+                              "div",
+                              { staticClass: "text-center" },
+                              [
+                                _c(
+                                  "b-card",
+                                  {
+                                    staticClass: "text-center",
+                                    attrs: {
+                                      header: "MENSAJE",
+                                      "header-text-variant": "white",
+                                      "header-tag": "header",
+                                      "header-bg-variant": "danger"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "b-card-text",
+                                      [
+                                        _c("h1", [_vm._v("Que lastima...")]),
+                                        _vm._v(" "),
+                                        _c("p", [
+                                          _vm._v(
+                                            " ¡Lo has peridio TODO, pero puedes volver a probar, a ver si tienes as suerte!"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("br"),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href:
+                                                "http://127.0.0.1:8000/milionari"
+                                            }
+                                          },
+                                          [
+                                            _c("b-button", [
+                                              _vm._v("VOLVER INICIO")
+                                            ])
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "b-button",
+                                          {
+                                            attrs: { variant: "success" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.refresh()
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("VOLVER A JUGAR")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          : _c(
+                              "div",
+                              [
+                                _c(
+                                  "b-card",
+                                  {
+                                    staticClass: "text-center",
+                                    attrs: {
+                                      header: "MENSAJE",
+                                      "header-text-variant": "white",
+                                      "header-tag": "header",
+                                      "header-bg-variant": "success"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "b-card-text",
+                                      [
+                                        _c("h1", [_vm._v("¡Felicidades!")]),
+                                        _vm._v(" "),
+                                        _c("p", [
+                                          _vm._v(
+                                            " Has conseguido la cantidad de:"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("br"),
+                                        _vm._v(" "),
+                                        _c("h2", [
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(_vm.current_money) +
+                                              " €"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("br"),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href:
+                                                "http://127.0.0.1:8000/milionari"
+                                            }
+                                          },
+                                          [
+                                            _c("b-button", [
+                                              _vm._v("VOLVER INICIO")
+                                            ])
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "b-button",
+                                          {
+                                            attrs: { variant: "success" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.refresh()
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("VOLVER A JUGAR")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
                       ])
                 ])
               : _c(
@@ -79345,14 +79536,16 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c(
-                      "a",
-                      { attrs: { href: "http://127.0.0.1:8000/game_mode?" } },
-                      [
-                        _c("b-button", { attrs: { variant: "success" } }, [
-                          _vm._v("VOLVER A JUGAR")
-                        ])
-                      ],
-                      1
+                      "b-button",
+                      {
+                        attrs: { variant: "success" },
+                        on: {
+                          click: function($event) {
+                            return _vm.refresh()
+                          }
+                        }
+                      },
+                      [_vm._v("VOLVER A JUGAR")]
                     )
                   ],
                   1
@@ -91967,8 +92160,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

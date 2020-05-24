@@ -9,14 +9,14 @@
     {{-- Milionare --}}    
     @switch($nivell)
     @case(1)
-        <h1>Millonario nivel facil</h1>
+        <h1>Millonario nivel fácil</h1>
         @break
 
     @case(2)
         <h1>Millonario nivel medio</h1>
         @break
     @case(3)
-        <h1>MIllonario nivel dificl</h1>
+        <h1>Millonario nivel difícil</h1>
         @break
 
     @default
