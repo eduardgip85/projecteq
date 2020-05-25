@@ -2104,8 +2104,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     canviar_pregunta: function canviar_pregunta() {
       this.num++;
+      debugger;
 
-      if (this.num == 5 || this.num == 8) {
+      if (this.num == 4 || this.num == 7) {
         this.se_puede_plantar = true;
       } else {
         this.se_puede_plantar = false;
@@ -2145,10 +2146,6 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return array;
-    },
-    redirigir: function redirigir() {
-      //alert("alright")
-      window.location.href = 'http://127.0.0.1:8000/quiz?';
     },
     guardar_resposta: function guardar_resposta(resposta) {
       debugger;
@@ -79353,7 +79350,7 @@ var render = function() {
                                           {
                                             attrs: {
                                               href:
-                                                "http://127.0.0.1:8000/milionari"
+                                                "http://masterquiz.es/public/milionari"
                                             }
                                           },
                                           [
@@ -79428,7 +79425,7 @@ var render = function() {
                                           {
                                             attrs: {
                                               href:
-                                                "http://127.0.0.1:8000/milionari"
+                                                "http://masterquiz.es/public/milionari"
                                             }
                                           },
                                           [
@@ -79530,7 +79527,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "a",
-                      { attrs: { href: "http://127.0.0.1:8000/quiz?" } },
+                      { attrs: { href: "http://masterquiz.es/public/quiz" } },
                       [_c("b-button", [_vm._v("VOLVER INICIO")])],
                       1
                     ),
@@ -92160,8 +92157,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\VARIS\Cep\DAW2B\PROJECTE\Quizz\projecteq\plantilla_vue\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

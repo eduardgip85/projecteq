@@ -47,7 +47,7 @@
                                 <h1>Qué lastima...</h1>
                                 <p> ¡Lo has peridio TODO, pero puedes volver a probar, a ver si tienes as suerte!</p>   
                                 <br>
-                                <a href="http://127.0.0.1:8000/milionari">
+                                <a href="http://masterquiz.es/public/milionari">
                                     <b-button>VOLVER INICIO</b-button>
                                 </a>
                                 <b-button @click="refresh()" variant="success">VOLVER A JUGAR</b-button>
@@ -67,7 +67,7 @@
                             <br>  
                             <h2> {{ current_money}} €</h2>
                             <br>
-                            <a href="http://127.0.0.1:8000/milionari">
+                            <a href="http://masterquiz.es/public/milionari">
                                     <b-button>VOLVER INICIO</b-button>
                                 </a>
                             <b-button @click="refresh()" variant="success">VOLVER A JUGAR</b-button>                       
@@ -100,7 +100,7 @@
                         </b-tr>
                     </b-tbody>
                 </b-table-simple>
-                <a href="http://127.0.0.1:8000/quiz?">
+                <a href="http://masterquiz.es/public/quiz">
                     <b-button>VOLVER INICIO</b-button>
                 </a>
 
@@ -172,7 +172,8 @@
             },
              canviar_pregunta(){
                 this.num++;
-                if(this.num == 5 || this.num == 8){
+                debugger;
+                if(this.num == 4 || this.num == 7){
                         this.se_puede_plantar = true;
                 }else{
                         this.se_puede_plantar = false;
@@ -215,11 +216,6 @@
                 }
 
                 return array;
-            },
-            redirigir(){
-                //alert("alright")
-
-                window.location.href = 'http://127.0.0.1:8000/quiz?'; 
             },
             guardar_resposta(resposta){ 
                 debugger;

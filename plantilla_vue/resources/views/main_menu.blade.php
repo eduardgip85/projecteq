@@ -12,7 +12,7 @@
   
         <a onclick="window.location='{{ url('/quiz') }}'" class="card text-center" id="card-boostrap">
           
-            <img class="card-img-top" src="/img/tournament.jpg" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset('img/tournament.jpg') }}" alt="Card image cap">
             <div class="card-body">          
               <button type="button" class="btn boto-secondari" action>
                 <h5 class="mt-2">CSGO</h5>
@@ -23,7 +23,7 @@
   
         <a onclick="window.location='{{ url('/milionari') }}'" class="card text-center" id="card-boostrap">
           
-            <img class="card-img-top" src="/img/millonario.jpg" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset('/img/millonario.jpg')}}" alt="Card image cap">
             <div class="card-body">        
               <button type="button" class="btn boto-secondari" action>
                 <h5 class="mt-2">Millonario</h5>

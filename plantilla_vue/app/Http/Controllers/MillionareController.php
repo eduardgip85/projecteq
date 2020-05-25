@@ -12,7 +12,7 @@ class MillionareController extends Controller
         // posarem el model del joc
         $mode = "millonario";
          // quantes preguntes tindrà 
-        $num_preguntes = "3";
+        $num_preguntes = "12";
         // nivell
         $nivell = 1;
        
@@ -28,7 +28,7 @@ class MillionareController extends Controller
         $nivell = 2;
 
         // quantes preguntes tindrà 
-        $num_preguntes = "4";
+        $num_preguntes = "12";
         // retornem view amb les dades
         return view('milionare.game', compact('mode', 'num_preguntes', 'nivell' ));
     }
@@ -40,7 +40,7 @@ class MillionareController extends Controller
         // posarem el model del joc
         $mode = "millonario";
         // quantes preguntes tindrà 
-        $num_preguntes = "3";
+        $num_preguntes = "12";
         // retornem view amb les dades
         return view('milionare.game', compact('mode', 'num_preguntes', 'nivell'));
     }
