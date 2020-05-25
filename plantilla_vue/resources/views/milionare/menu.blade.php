@@ -13,7 +13,7 @@
         <!-- Facil -->
         <a onclick="window.location='{{ url('/mfacil') }}'" class="card text-center" id="card-boostrap">
                 
-            <img class="card-img-top" src="/img/game.jpg" alt="Card image cap">
+            <img class="card-img-top" src="/img/facil.jpg" alt="Card image cap">
             <div class="card-body">        
                 <button type="button" class="btn boto-secondari" action>
                 <h5 class="mt-2">Facil</h5>
@@ -25,7 +25,7 @@
         <!-- Normal -->
         <a onclick="window.location='{{ url('/mnormal') }}'" class="card text-center" id="card-boostrap">
             
-            <img class="card-img-top" src="/img/game.jpg" alt="Card image cap">
+            <img class="card-img-top" src="/img/medio.jpg" alt="Card image cap">
             <div class="card-body">        
                 <button type="button" class="btn boto-secondari" action>
                 <h5 class="mt-2">Normal</h5>
@@ -37,7 +37,7 @@
         <!-- Dificl -->
         <a onclick="window.location='{{ url('/mdificil') }}'" class="card text-center" id="card-boostrap">
             
-            <img class="card-img-top" src="/img/rankss.jpg" alt="Card image cap">
+            <img class="card-img-top" src="/img/millonario.jpg" alt="Card image cap">
             <div class="card-body">
                 <button type="button" class="btn  boto-secondari" action>
                 <h5 class="mt-2">Dificil</h5>
